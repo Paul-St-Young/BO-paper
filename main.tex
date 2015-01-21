@@ -95,10 +95,10 @@ $\text{Ion}$ & $\text{Li}^+(^1\text{S)}$ & $\text{Be}^+(^2\text{S)}$ & $\text{B}
 $\text{Guess}$ & $\text{CAS(2,5)}$ & $\text{CAS(3,18)}$ & $\text{CAS(4,40)}$ & $\text{CAS(5,16)}$ & $\text{CAS(6,20)}$ & $\text{CAS(5,15)}$ & $\text{CAS(6,30)}$ \\
 $\text{FN-DMCe}$ & $0$ & $\text{-14.324753(6)}$ & $\text{-24.34884(1)}$ & $\text{-37.43075(2)}$ & $\text{-54.05376(3)}$ & $\text{-74.56588(4)}$ & $\text{-99.0913(1)}$ \\
 $\text{FN-DMCe}_{\text{ref}}$ & $\text{-7.279914(3)}$ & $\text{-14.324761(3)}$ & $\text{-24.34887(2)}$ & $\text{-37.43073(4)}$ & $\text{-54.05383(7)}$ & $\text{-74.56662(7)}$ & $\text{-99.0911(2)}$ \\
-$\text{FN-DMCei}$ & $\text{0}$ & $\text{-14.32386(2)}$ & $\text{-24.34750(3)}$ & $\text{-37.42904(4)}$ & $\text{-54.05182(9)}$ & $\text{-74.56336(8)}$ & $\text{0}$ \\
+$\text{FN-DMCei}$ & $\text{0}$ & $\text{-14.32386(2)}$ & $\text{-24.34750(3)}$ & $\text{-37.42904(4)}$ & $\text{-54.05182(9)}$ & $\text{-74.56336(8)}$ & $\text{-99.0885(3)}$ \\
 \hline
-$\text{IP}_{\text{e}}$  & 0 & 0.34256(2) & 0.3049(3) & 0.4138(5) & 0.53475(8) & 0.500(1) & 0 \\
-$\text{IP}_{\text{ei}}$ & 0 & 0.34257(2) & 0.3049(3) & 0.4137(5) & 0.53473(8) & 0.500(1) & 0 \\
+$\text{IP}_{\text{e}}$  & 0 & 0.34256(2) & 0.3049(3) & 0.4138(5) & 0.53475(8) & 0.500(1) & 0.632(1) \\
+$\text{IP}_{\text{ei}}$ & 0 & 0.34257(2) & 0.3049(3) & 0.4137(5) & 0.53473(8) & 0.500(1) & 0.632(1) \\
 $\text{IP}_{\text{exp}}$ & 0.19808 & 0.3425 & 0.30502 & 0.413797 & 0.533967 & 0.500526 & 0.640173 \\
 \hline
 \end{tabular}
@@ -106,22 +106,23 @@ $\text{IP}_{\text{exp}}$ & 0.19808 & 0.3425 & 0.30502 & 0.413797 & 0.533967 & 0.
 \end{table*}
  
 \subsection{Atomization Energies}
-We also calculated ground state energies for LiH, LiH-, BeH and BH (see Table \ref{tab:atomization}). The energies calculated in the adiabatic limit are on par and sometimes better than the best available quantum chemistry results \cite{Adamowicz_LiH,Koput_BeH,Miliordos_BH} and the energies calculated without the adiabatic assumption are in excellent agreement with state-of-the-art quantum chemistry calculations performed with ECG. In the case of simple hydrides, non-adiabatic effects does make a noticeable contribution to the atomization energy. This is possibly due to the presence of the light weighted proton.  
+We also calculated ground state energies for LiH, LiH-, BeH and BH (see Table \ref{tab:atomization}). The energies calculated in the adiabatic limit are on par and sometimes better than the best available quantum chemistry results \cite{Adamowicz_LiH,Koput_BeH,Miliordos_BH} and the energies calculated without the adiabatic assumption are in excellent agreement with state-of-the-art quantum chemistry calculations performed with ECG. In the case of simple hydrides, non-adiabatic effects do make a noticeable contribution to the atomization energy. This is possibly due to the presence of the light weighted proton.  
  
 \begin{table}[htpb!]
 \setlength{\extrarowheight}{3pt}
-\begin{tabular}{*{1}{*{5}{c}}}
+\begin{tabular}{*{1}{*{7}{c}}}
 \hline\hline
-$\text{Molecule}$ & $\text{LiH}$ & $\text{LiH-}$ & $\text{BeH}$ & $\text{BH}$ \\ \hline
-$\text{Guess}$ & $\text{CAS(4,43)}$ & $\text{CAS(5,17)}$ & $\text{CAS(5,44)}$ & $\text{CAS(4,14)}$ \\
-$\text{FN-DMCe}$ & $\text{-8.070521(7)}$ & $\text{-8.08220(2)}$ & $\text{-15.24793(1)}$ & $\text{-25.28868(2)}$ \\
-$E_{\text{Ref}}$ & $\text{-8.07045}$ & $0$ & $\text{-15.247846}$ & $\text{-25.287650}$ \\
-$\text{FN-DMCei}$ & $\text{-8.06620(2)}$ & $\text{-8.07811(3)}$ & $\text{-15.24196(7)}$ & $\text{-25.28103(4)}$ \\
-$\text{ECG}$ & $\text{-8.0664371(15)}$ & $-8.07856887$ & $\text{15.24203(10)}$ & $\text{-25.2803(10)}$ \\ \hline
-$E^{\text{at}}_{e}$ & 0.092465(8)& N/A & 0.08062(1) & 0.13491(2) \\
-$E^{\text{at}}_{ei}$ & 0.08888(2)& N/A & 0.07563(7) & 0.12869(5) \\
-$E^{\text{at}}_{\text{ref}}$ & 0.08937(5) & N/A & 0.0761(4) & 0.1298(2) \\
-$E^{\text{at}}_{\text{exp}}$ & 0.08874(38) & N/A & 0.0826(11) & 0.1281(37) \\
+$\text{Molecule}$ & $\text{LiH}$ & $\text{LiH-}$ & $\text{BeH}$ & $\text{BH}$ & $\text{OH}$ & $\text{HF}$ \\ \hline
+$\text{Guess}$ & $\text{CAS(4,43)}$ & $\text{CAS(5,17)}$ & $\text{CAS(5,44)}$ & $\text{CAS(4,14)}$ & $\text{CAS(5,20)}$ & $\text{CAS(6,20)}$ \\
+$\text{FN-DMCe}$ & $\text{-8.070521(7)}$ & $\text{-8.08220(2)}$ & $\text{-15.24793(1)}$ & $\text{-25.28868(2)}$ & $\text{-75.72951(8)}$ & $\text{-100.45093(6)}$ \\
+$E_{\text{Ref}}$ & $-8.07045$ & $\text{N/A}$ & $-15.247846$ & $-25.287650$ & $\text{N/A}$ & $\text{N/A}$ \\
+$\text{FN-DMCei}$ & $\text{-8.06620(2)}$ & $\text{-8.07811(3)}$ & $\text{-15.24196(7)}$ & $\text{-25.28103(4)}$ & $\text{-75.7177(5)}$ & $\text{-100.4370(3)}$ \\
+$\text{ECG}$ & $\text{-8.0664371(15)}$ & $-8.07856887$ & $\text{15.24203(10)}$ & $\text{-25.2803(10)}$ & $\text{N/A}$ & $\text{N/A}$ \\
+\hline
+$E^{\text{at}}_{e}$ & 0.092465(8) & N/A & 0.08062(1) & 0.13491(2) & 0.16397(8) & 0.22807(9) \\
+$E^{\text{at}}_{ei}$ & 0.08905(2) & N/A & 0.0758(7)  & 0.12886(5) & 0.15487(5) & 0.21717(3) \\
+$E^{\text{at}}_{\text{ref}}$ & 0.08937(5) & N/A & 0.0761(4) & 0.1298(2) & 0.1621(2) & 0.2157(3)\\
+$E^{\text{at}}_{\text{exp}}$ & 0.08874(38) & N/A & 0.0826(11) & 0.1281(37) & 0.1622(1) & 0.2158(3) \\
 \hline\hline
 \end{tabular}
 \caption{\textbf{Atomization Energies} $E^{\text{at}}_{e}$ is the atomization energy in the adiabatic limit, whereas $E^{\text{at}}_{ei}$ is obtained without the adiabatic assumption. $E^{\text{at}}_{\text{ref}}$ is taken from \cite{Feller_Corrections} and $E^{\text{at}}_{\text{exp}}$ is obtained from \cite{CCCBDB} \label{tab:atomization}}
