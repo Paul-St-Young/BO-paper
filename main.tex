@@ -10,6 +10,8 @@
 \usepackage{array} % for changing table height
 \usepackage{comment}
 \usepackage[bookmarks]{hyperref}
+%\usepackage{siunitx} % for decimal alignment in tables
+%\usepackage{arydshln} % for dashed line in tables
 
 % avoids incorrect hyphenation, added Nov/08 by SSR
 \hyphenation{ALPGEN}
@@ -83,32 +85,33 @@ Similar calculations were performed for diatomic systems (Table \ref{tab:atomiza
 \subsection{Ionization Energies}
 The ionization energies are listed at the end of Table \ref{tab:ionization} and they agree well with experimental results. Notice that even though ground state energies change significantly with the inclusion of non-adiabatic effects, the ionization energies match perfectly with or without the adiabatic assumption. This suggests that for atomic systems, the gradient coupling between electron and ion motions is indeed negligible. The difference in ground state energies can be entirely attributed to the zero point motion of the nuclei. Physically, this means that for all first row atoms, the outer most electron is perfectly screened from the nucleus and all of the energy required for its removal can be attributed to its interaction with the rest of the electrons in the atom.
 
-The ground state energy of $\text{LiH}^-$ was also calculated to obtain the electron affinity of LiH. The energy obtained in the adiabatic limit at the DMC level is $-8.08220(2)$Ha and $-8.07811(3)$Ha with non-adiabatic effects included. Our non-adiabatic result is in good agreement with a previous ECG study \cite{Bubin_LiH_noBO} which reported a value of $-8.07856887$Ha, giving an electron affinity of $0.01191(4)$Ha which is very close to the ECG prediction of $0.012132(2)$Ha and agrees with experiment $0.0126(4)$Ha up to the mHa level.  It should be noted that the authors of \cite{Bubin_LiH_noBO} mislabeled the columns for ground state energies of $\text{LiH}^-$ and LiD resulting in a miss-citation in \cite{Mitroy_ECG}.
+The ground state energy of $\text{LiH}^-$ was also calculated to obtain the electron affinity of LiH. The energy obtained in the adiabatic limit at the DMC level is $-8.08220(2)$Ha and $-8.07811(3)$Ha with non-adiabatic effects included. Our non-adiabatic result is in good agreement with a previous ECG study \cite{Bubin_LiH_noBO} which reported a value of $-8.07856887$Ha. We report an electron affinity of $0.01191(4)$Ha which is very close to the ECG prediction of $0.012132(2)$Ha and agrees with experiment $0.0126(4)$Ha up to the mHa level. It should be noted that the authors of \cite{Bubin_LiH_noBO} mislabeled the columns for ground state energies of $\text{LiH}^-$ and LiD resulting in a miss-citation in \cite{Mitroy_ECG}.
 
 \begin{table*}[htpb!]
 \setlength{\extrarowheight}{3pt}
 \begin{tabular}{*{1}{*{8}{c}}}
 \hline\hline
 $\text{Atom}$ & $\text{Li}(^2\text{S)}$ & $\text{Be}(^1\text{S)}$ & $\text{B}(^2\text{P)}$ & $\text{C}(^3\text{P)}$ & $\text{N}(^4\text{S)}$ & $\text{O}(^3\text{P)}$ & $\text{F}(^2\text{P)}$ \\ \hline
-$\text{Guess}$ & $\text{CAS(3,23)}$ & $\text{CAS(4,20)}$ & $\text{CAS(5,40)}$ & $\text{CAS(6,16)}$ & $\text{CAS(7,20)}$ & $\text{CAS(8,15)}$ & $\text{CAS(9,15)}$ \\
-$\text{FN-DMCe}$ & $\text{-7.478056(4)}$ & $\text{-14.66732(1)}$ & $\text{-24.65377(1)}$ & $\text{-37.84449(2)}$ & $\text{-54.58858(3)}$ & $\text{-75.06576(4)}$ & $\text{-99.7316(1)}$ \\
-$\text{E}_\text{ref}$ & $\text{-7.478067(5)}$ & $\text{-14.667306(7)}$ & $\text{-24.65379(3)}$ & $\text{-37.84446(6)}$ & $\text{-54.58867(8)}$ & $\text{-75.0654(1)}$ & $\text{-99.7318(1)}$ \\
-$\text{FN-DMCei}$ & $\text{-7.47742(1)}$ & $\text{-14.66643(2)}$ & $\text{-24.65244(3)}$ & $\text{-37.84277(6)}$ & $\text{-54.58655(8)}$ & $\text{-75.0631(1)}$ & $\text{-99.7290(4)}$ \\
+This Work & $\text{-7.478056(4)}$ & $\text{-14.66732(1)}$ & $\text{-24.65377(1)}$ & $\text{-37.84449(2)}$ & $\text{-54.58858(3)}$ & $\text{-75.06576(4)}$ & $\text{-99.7316(1)}$ \\
+Seth 2011 \cite{Seth_Bench} & $\text{-7.478067(5)}$ & $\text{-14.667306(7)}$ & $\text{-24.65379(3)}$ & $\text{-37.84446(6)}$ & $\text{-54.58867(8)}$ & $\text{-75.0654(1)}$ & $\text{-99.7318(1)}$ \\
+Davidson 1993 \cite{Davidson_Atoms} &  -7.47807 & -14.66736 & -24.65391 & -37.8450 &-54.5892 & -75.0673 & -99.7339 \\
+This Work (full) & $\text{-7.47742(1)}$ & $\text{-14.66643(2)}$ & $\text{-24.65244(3)}$ & $\text{-37.84277(6)}$ & $\text{-54.58655(8)}$ & $\text{-75.0631(1)}$ & $\text{-99.7290(4)}$ \\
 \hline
 \end{tabular} \\ 
 \begin{tabular}{*{1}{*{8}{c}}}
 $\text{Ion}$ & $\text{Li}^+(^1\text{S)}$ & $\text{Be}^+(^2\text{S)}$ & $\text{B}^+(^1\text{S)}$ & $\text{C}^+(^2\text{P)}$ & $\text{N}^+(^3\text{P)}$ & $\text{O}^+(^4\text{S)}$ & $\text{F}^+(^3\text{P)}$ \\ \hline
-$\text{Guess}$ & $\text{CAS(2,5)}$ & $\text{CAS(3,18)}$ & $\text{CAS(4,40)}$ & $\text{CAS(5,16)}$ & $\text{CAS(6,20)}$ & $\text{CAS(5,15)}$ & $\text{CAS(6,30)}$ \\
-$\text{FN-DMCe}$ & $-7.279919(4)$ & $\text{-14.324753(6)}$ & $\text{-24.34884(1)}$ & $\text{-37.43075(2)}$ & $\text{-54.05376(3)}$ & $\text{-74.56588(4)}$ & $\text{-99.0913(1)}$ \\
-$\text{E}_{\text{ref}}$ & $\text{-7.279914(3)}$ & $\text{-14.324761(3)}$ & $\text{-24.34887(2)}$ & $\text{-37.43073(4)}$ & $\text{-54.05383(7)}$ & $\text{-74.56662(7)}$ & $\text{-99.0911(2)}$ \\
-$\text{FN-DMCei}$ & $\text{-7.2793(1)}$ & $\text{-14.32386(2)}$ & $\text{-24.34750(3)}$ & $\text{-37.42904(4)}$ & $\text{-54.05182(9)}$ & $\text{-74.56336(8)}$ & $\text{-99.0885(3)}$ \\
+This Work & $-7.279919(4)$ & $\text{-14.324753(6)}$ & $\text{-24.34884(1)}$ & $\text{-37.43075(2)}$ & $\text{-54.05376(3)}$ & $\text{-74.56588(4)}$ & $\text{-99.0913(1)}$ \\
+Seth 2011 \cite{Seth_Bench} & $\text{-7.279914(3)}$ & $\text{-14.324761(3)}$ & $\text{-24.34887(2)}$ & $\text{-37.43073(4)}$ & $\text{-54.05383(7)}$ & $\text{-74.56662(7)}$ & $\text{-99.0911(2)}$ \\
+Davidson 1993 \footnotemark[1] \cite{Davidson_Atoms} & -7.27999 & -14.3249 & -24.3489 & -37.4312 & -54.0552 & -74.5668 & -99.0937 \\
+This Work (full) & $\text{-7.2793(1)}$ & $\text{-14.32386(2)}$ & $\text{-24.34750(3)}$ & $\text{-37.42904(4)}$ & $\text{-54.05182(9)}$ & $\text{-74.56336(8)}$ & $\text{-99.0885(3)}$ \\
 \hline
-$\text{IP}_{\text{e}}$  & 0.19814(1) & 0.34256(2) & 0.3049(3) & 0.4138(5) & 0.53475(8) & 0.500(1) & 0.640(1) \\
-$\text{IP}_{\text{ei}}$ & 0.1981(1) & 0.34257(2) & 0.3049(3) & 0.4137(5) & 0.53473(8) & 0.500(1) & 0.640(1) \\
-$\text{IP}_{\text{exp}}$ & 0.19808 & 0.3425 & 0.30502 & 0.413797 & 0.533967 & 0.500526 & 0.640173 \\
+IP & 0.19814(1) & 0.34256(2) & 0.3049(3) & 0.4138(5) & 0.53475(8) & 0.500(1) & 0.640(1) \\
+IP (full) & 0.1981(1) & 0.34257(2) & 0.3049(3) & 0.4137(5) & 0.53473(8) & 0.500(1) & 0.640(1) \\
+Exp. \cite{Davidson_Atoms} & 0.19808 & 0.3425 & 0.30502 & 0.413797 & 0.533967 & 0.500526 & 0.640173 \\
 \hline
 \end{tabular}
-\caption{\textbf{Ionization Energies} Fixed-Node DMC was performed with and without the adiabatic assumption and the energies for each atom and ion is reported in units of Hartree. FN-DMCe denotes that only electrons are treated quantum mechanically while the ions are clamped in their equilibrium positions. FN-DMCei denotes that both electrons and ions are treated quantum mechanically. The reference energies are taken from \cite{Seth_Bench} \label{tab:ionization}}
+\footnotetext[1]{The ionic ground state energies are calculated by adding ionization potentials in Table XII to the atomic ground state energies in Table XI from \cite{Davidson_Atoms} }
+\caption{\textbf{Ionization Energies} Fixed-Node DMC was performed with and without the adiabatic assumption and the energies for each atom and ion is reported in units of Hartree. The label (full) means we treat both electrons and ions quantum mechanically. \label{tab:ionization}}
 \end{table*}
  
 \subsection{Atomization Energies}
@@ -119,23 +122,26 @@ We also calculated ground state energies for LiH, BeH, BH, OH and HF (see Table 
 \begin{tabular}{*{1}{*{7}{c}}}
 \hline\hline
 $\text{Molecule}$ & $\text{LiH }(^1\Sigma^+)$ & $\text{BeH }(^2\Sigma^+)$ & $\text{BH }(^1\Sigma^+)$ & $\text{CH }(^2\Pi)$ & $\text{OH }(^2\Pi)$ & $\text{HF }(^1\Sigma^+)$ \\ \hline
-$\text{Guess}$ & $\text{CAS(4,43)}$ & $\text{CAS(5,44)}$ & $\text{CAS(4,14)}$ & $\text{CAS(7,20)}$ & $\text{CAS(9,14)}$ & $\text{CAS(6,20)}$ \\
-$\text{FN-DMCe}$ & $\text{-8.070521(7)}$ & $\text{-15.24793(1)}$ & $\text{-25.28868(2)}$ & $\text{-38.4781(1)}$ & $\text{-75.7352(1)}$ & $\text{-100.44941(6)}$ \\
-$E_{\text{Ref}}$ & $-8.07045$ & $-15.247846$ & $-25.287650$ & $-38.4630(5)$ & $-75.7213(8)$ & $-100.4429(6)$ \\
-$\text{FN-DMCei}$ & $\text{-8.06620(2)}$ & $\text{-15.24196(7)}$ & $\text{-25.28103(4)}$ & $\text{-38.4692(2)}$ & $\text{-75.7260(4)}$ & $\text{-100.4391(4)}$ \\
-$\text{ECG}$ & $\text{-8.0664371(15)}$ & $\text{15.24203(10)}$ & $\text{-25.2803(10)}$ & $\text{N/A}$ & $\text{N/A}$ & $\text{N/A}$ \\
+This Work & $\text{-8.070521(7)}$ & $\text{-15.24793(1)}$ & $\text{-25.28868(2)}$ & $\text{-38.4781(1)}$ & $\text{-75.7352(1)}$ & $\text{-100.44941(6)}$ \\
+$E_{\text{ref}}$ \footnotemark[1] \cite{Adamowicz_LiH,Koput_BeH,Miliordos_BH,Davidson_Atoms,Feller_Corrections} & $\text{-8.07045}$ & $\text{-15.247846}$ & $\text{-25.287650}$ & $\text{-38.4790(2)}$ & $\text{-75.7382(2)}$ & $\text{-100.4600(3)}$ \\
+This Work (full) & $\text{-8.06620(2)}$ & $\text{-15.24196(7)}$ & $\text{-25.28103(4)}$ & $\text{-38.4704(4)}$ & $\text{-75.7260(4)}$ & $\text{-100.4391(4)}$ \\
+ECG \cite{Bubin_LiH_noBO,Bubin_BeH_noBO,Bubin_BH_noBO} & $\text{-8.0664371(15)}$ & $\text{15.24203(10)}$ & $\text{-25.2803(10)}$ & $\text{N/A}$ & $\text{N/A}$ & $\text{N/A}$ \\
 \hline
-$E^{\text{at}}_{e}$ & 0.092465(8) & 0.08062(1) & 0.13491(2) & 0.13361(2) & 0.16944(4) & 0.21781(6) \\
-$E^{\text{at}}_{ei}$ & 0.08905(2)  & 0.07580(7)  & 0.12886(5) & 0.1267(6) & 0.16317(4) & 0.21037(5) \\
-$E^{\text{at}}_{\text{ref}}$ & 0.08940(5) & 0.0761(4) & 0.1299(2) & 0.1276(2) & 0.1622(2) & 0.2166(3)\\
-$E^{\text{at}}_{\text{exp}}$ & 0.08874(38) & 0.0826(11) & 0.1281(37) & 0.1275(5) & 0.1622(1) & 0.2158(3) \\
+$D_{e}$ & 0.092465(8) & 0.08062(1) & 0.13491(2) & 0.13361(2) & 0.16944(4) & 0.21781(6) \\
+Feller 2008\footnotemark[2] \cite{Feller_Corrections} & 0.09257(5) & 0.0808(4) & 0.1352(2) & 0.1340(2) & 0.1709(2) & 0.2259(3)\\
+$D_{e}$ (full) & 0.08905(2)  & 0.07580(7)  & 0.12886(5) & 0.1279(7) & 0.16317(4) & 0.21037(5) \\
+Feller 2008\footnotemark[3] \cite{Feller_Corrections} & 0.08940(5) & 0.0761(4) & 0.1299(2) & 0.1276(2) & 0.1622(2) & 0.2166(3)\\
+Exp. \cite{CCCBDB} & 0.08874(38) & 0.0826(11) & 0.1281(37) & 0.1275(5) & 0.1622(1) & 0.2158(3) \\
 \hline\hline
 \end{tabular}
-\caption{\textbf{Atomization Energies} The adiabatic reference energies are for CH,OH and HF taken from \cite{Anderson_Bench}, whereas the values for the smaller molecules LiH, BeH and BH are taken from ECG studies \cite{Adamowicz_LiH,Koput_BeH,Miliordos_BH} as they tend to be more accurate. $E^{\text{at}}_{e}$ is the atomization energy in the adiabatic limit, whereas $E^{\text{at}}_{ei}$ is obtained without the adiabatic assumption. $E^{\text{at}}_{\text{ref}}$ is taken from \cite{Feller_Corrections} processed to excluded scalar relativistic and spin-orbit couping corrections. $E^{\text{at}}_{\text{exp}}$ is obtained from \cite{CCCBDB} \label{tab:atomization}}
+\footnotetext[1]{For the smaller systems (LiH, BeH and BH), ECG studies provide the best reference energies. For CH, OH and HF, we combined the atomic energies in \cite{Davidson_Atoms} with the atomization energies in \cite{Feller_Corrections} to produce the reference energies. }
+\footnotetext[2]{The non-relativistic atomization energy in the adiabatic limit are calculated by subtracting the scalar relativistic, spin-orbit coupling and zero-point energy corrections from the reference energies in Table VI of \cite{Feller_Corrections} }
+\footnotetext[3]{Here only the scalar relativistic and spin-orbit coupling corrections are subtracted}
+\caption{\textbf{Atomization Energies} Fixed-Node DMC was performed with and without the adiabatic assumption for all first row hydrides. All energies are reported in units of Hartree. The label (full) means we treat both electrons and ions quantum mechanically.}
 \end{table} 
 
 \section{Conclusion}
-We calculated the ground-state energies of first row atoms, ions and a number of simple hydrides to an accuracy of $0.1$mHa both with and without the adiabatic assumption. The ionization energies of first row atoms was independent of the adiabatic assumption, suggesting that either the energy difference between the adiabatic and non-adiabatic ground states is entirely due to the zero point motion of the nuclei or the coupling between the nucleus and electrons is not important in the ionization process. The atomization energies of simple hydrides were significantly different in the adiabatic than in the non-adiabatic limit, possibly due to the presence of a light nucleus (the proton) in the molecule. We showed that it is necessary to include non-adiabatic effects to accurately predict the experimental values of atomization energies for these simple hydrides.
+We calculated the ground-state energies of first row atoms and their corresponding ions and hydrides to an accuracy of $0.1$mHa both with and without the adiabatic assumption. We found the ionization energies of the atoms to be independent of the adiabatic assumption, suggesting that either the energy difference between the adiabatic and non-adiabatic ground states is entirely due to the zero point motion of the nuclei or the coupling between the nucleus and electrons is not important in the ionization process. The atomization energies of simple hydrides were significantly different in the adiabatic than in the non-adiabatic limit, possibly due to the presence of a light nucleus (the proton) in the molecule. We showed that it is necessary to include non-adiabatic effects to accurately predict the experimental values of atomization energies for these simple hydrides.
 
 These calculations also verified the validity of the "dragged-node" approximation, namely it does indeed produce a high quality electron-ion trial wavefunction from a good electron wavefunction. This technique also has the potential to solve more interesting problems due to its ease of implementation as well as the polynomial scaling in computational time with respect to the number of electrons. As mentioned at end of Method section, this technique can be generalized quite easily to deal with larger systems. In addition, we are able to offer similar levels of accuracy compared to the most sophisticated quantum chemistry methods (coupled cluster and ECG) while maintaining a reasonable level of computational and human cost.
 
