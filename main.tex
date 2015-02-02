@@ -25,11 +25,7 @@
 \maketitle
 
 \section{Introduction}
-The Born-Oppenheimer Approximation\cite{BO} allows the separation of time scales of the electron and ion problems and greatly reduces the complexity of the Hamiltonian to be solved. It is such a good approximation that it is inherently adopted in much of the \textit{Ab initio} studies. However, there are cases where the Born-Oppenheimer approximation fails, that is when the coupling between the electron and nuclei motions become important, especially in the presence of light nuclei. It has been shown that the inclusion of non-adiabatic effects is crucial for accurately characterizing the stability of atomic hydrogen as well as predicting its ground state crystal structure \cite{Ceperley_1987,Natoli_1993,Natoli_1995}. The coupling between electron and nuclei motions is also important in distinguishing the hydrogen atom transfer (HAT) and proton-coupled electron transfer (PCET) mechanisms \cite{Sirjoosingh_PCET}. Current efforts in incorporating  non-adiabatic effects are often costly either in human time or computational time. We would like to demonstrate that with minimum modification to the existing fixed-node diffusion Monte Carlo (FN-DMC), one can obtain highly accurate results without the Born-Oppenheimer approximation.
-
-Studies that include non-adiabatic effects are scarce. Here we note two approaches that offer similar or better accuracy than our method. The first approach is to add corrections to a basic coupled cluster calculation \cite{Feller_Corrections}. In such an approach, a frozen-core coupled cluster singles and doubles (FC-CCSD) \cite{Purvis_CCSD} calculation serves as a first approximation for the ground-state energies. Then a series of corrections including core/valance, spin-orbit coupling, higher order correlation, zero point motion, diagonal Born-Oppenheimer and scalar relativistic effects are introduced. This method produces highly accurate expectation values, but contains uncontrolled errors that have to be estimated either empirically or analyzed on a molecule-by-molecule basis \cite{Feller_Error}. Another approach in a more recent development is to use the explicitly correlated Gaussian (ECG) basis \cite{Adamowicz_ECG,Mitroy_ECG}. This approach is capable of calculating the ground-state energies of small molecules to an incredibly high accuracy. Unfortunately, the current implementation of ECG cannot be applied to moderately-sized systems due to factorial scaling in computational cost with the number of identical particles \cite{Bubin_BH_noBO}. Other methods with less aggressive scaling include nuclear-electronic orbital (NEO) Hatree-Fock (HF) \cite{Sharon_NEO}, NEO explicitly correlated HF (NEO-ECHF) \cite{Sharon_NEOX,Sharon_NEOX1,Sharon_NEOX2}, path integral Monte Carlo \cite{Ilkka_Path,Ilkka_Path1,Ilkka_Path2} and multicomponent density functional theory \cite{Sharon_NEO-DFT,Sharon_NEO-DFT1,Sharon_NEO-DFT2,Sharon_NEO-DFT3,Gross_NEO-DFT,Gross_NEO-DFT1}. While these methods can be applied to larger systems, it would be difficult to deliver the same kind of accuracy that ECG offers without significant development.
-
-We acknowledge the subtle difference between the Born-Oppenheimer approximation and the adiabatic assumption, namely the former includes the kinetic energy of nuclei on a single electronic potential surface whereas the latter doesn't \cite{Cederbaum_BO}. Here we will only consider the adiabatic limit, where the ions are "clamped" and their kinetic energies ignored and the fully non-adiabatic case, where the exact non-relativistic Hamiltonian is used. One might equivalently refer to the latter as non-Born-Oppenheimer. We do not consider spin-orbit coupling effects in either case.
+\input{Section/Intro}
 
 \section{Method}
 
@@ -96,26 +92,32 @@ The ground state energy of $\text{LiH}^-$ was also calculated to obtain the elec
 \begin{tabular}{*{1}{*{8}{c}}}
 \hline\hline
 $\text{Atom}$ & $\text{Li}(^2\text{S)}$ & $\text{Be}(^1\text{S)}$ & $\text{B}(^2\text{P)}$ & $\text{C}(^3\text{P)}$ & $\text{N}(^4\text{S)}$ & $\text{O}(^3\text{P)}$ & $\text{F}(^2\text{P)}$ \\ \hline
-This Work & $\text{-7.478056(4)}$ & $\text{-14.66732(1)}$ & $\text{-24.65377(1)}$ & $\text{-37.84449(2)}$ & $\text{-54.58858(3)}$ & $\text{-75.06576(4)}$ & $\text{-99.7316(1)}$ \\
-Seth 2011 \cite{Seth_Bench} & $\text{-7.478067(5)}$ & $\text{-14.667306(7)}$ & $\text{-24.65379(3)}$ & $\text{-37.84446(6)}$ & $\text{-54.58867(8)}$ & $\text{-75.0654(1)}$ & $\text{-99.7318(1)}$ \\
+&&&adiabatic&&&& \\
+FN-DMC & $\text{-7.478056(4)}$ & $\text{-14.66732(1)}$ & $\text{-24.65377(1)}$ & $\text{-37.84449(2)}$ & $\text{-54.58858(3)}$ & $\text{-75.06576(4)}$ & $\text{-99.7316(1)}$ \\
+Seth DMC \cite{Seth_Bench} & $\text{-7.478067(5)}$ & $\text{-14.667306(7)}$ & $\text{-24.65379(3)}$ & $\text{-37.84446(6)}$ & $\text{-54.58867(8)}$ & $\text{-75.0654(1)}$ & $\text{-99.7318(1)}$ \\
 Davidson 1993 \cite{Davidson_Atoms} &  -7.47807 & -14.66736 & -24.65391 & -37.8450 &-54.5892 & -75.0673 & -99.7339 \\
-This Work (full) & $\text{-7.47742(1)}$ & $\text{-14.66643(2)}$ & $\text{-24.65244(3)}$ & $\text{-37.84277(6)}$ & $\text{-54.58655(8)}$ & $\text{-75.0631(1)}$ & $\text{-99.7290(4)}$ \\
+&&&non-adiabatic&&&& \\
+FN-DMC & $\text{-7.47742(1)}$ & $\text{-14.66643(2)}$ & $\text{-24.65244(3)}$ & $\text{-37.84277(6)}$ & $\text{-54.58655(8)}$ & $\text{-75.0631(1)}$ & $\text{-99.7290(4)}$ \\
 \hline
 \end{tabular} \\ 
 \begin{tabular}{*{1}{*{8}{c}}}
 $\text{Ion}$ & $\text{Li}^+(^1\text{S)}$ & $\text{Be}^+(^2\text{S)}$ & $\text{B}^+(^1\text{S)}$ & $\text{C}^+(^2\text{P)}$ & $\text{N}^+(^3\text{P)}$ & $\text{O}^+(^4\text{S)}$ & $\text{F}^+(^3\text{P)}$ \\ \hline
-This Work & $-7.279919(4)$ & $\text{-14.324753(6)}$ & $\text{-24.34884(1)}$ & $\text{-37.43075(2)}$ & $\text{-54.05376(3)}$ & $\text{-74.56588(4)}$ & $\text{-99.0913(1)}$ \\
-Seth 2011 \cite{Seth_Bench} & $\text{-7.279914(3)}$ & $\text{-14.324761(3)}$ & $\text{-24.34887(2)}$ & $\text{-37.43073(4)}$ & $\text{-54.05383(7)}$ & $\text{-74.56662(7)}$ & $\text{-99.0911(2)}$ \\
+&&&adiabatic&&&& \\
+FN-DMC & $-7.279919(4)$ & $\text{-14.324753(6)}$ & $\text{-24.34884(1)}$ & $\text{-37.43075(2)}$ & $\text{-54.05376(3)}$ & $\text{-74.56588(4)}$ & $\text{-99.0913(1)}$ \\
+Seth DMC \cite{Seth_Bench} & $\text{-7.279914(3)}$ & $\text{-14.324761(3)}$ & $\text{-24.34887(2)}$ & $\text{-37.43073(4)}$ & $\text{-54.05383(7)}$ & $\text{-74.56662(7)}$ & $\text{-99.0911(2)}$ \\
 Davidson 1993 \footnotemark[1] \cite{Davidson_Atoms} & -7.27999 & -14.3249 & -24.3489 & -37.4312 & -54.0552 & -74.5668 & -99.0937 \\
-This Work (full) & $\text{-7.2793(1)}$ & $\text{-14.32386(2)}$ & $\text{-24.34750(3)}$ & $\text{-37.42904(4)}$ & $\text{-54.05182(9)}$ & $\text{-74.56336(8)}$ & $\text{-99.0885(3)}$ \\
+&&&non-adiabatic&&&& \\
+FN-DMC & $\text{-7.2793(1)}$ & $\text{-14.32386(2)}$ & $\text{-24.34750(3)}$ & $\text{-37.42904(4)}$ & $\text{-54.05182(9)}$ & $\text{-74.56336(8)}$ & $\text{-99.0885(3)}$ \\
 \hline
-IP & 0.19814(1) & 0.34256(2) & 0.3049(3) & 0.4138(5) & 0.53475(8) & 0.500(1) & 0.640(1) \\
-IP (full) & 0.1981(1) & 0.34257(2) & 0.3049(3) & 0.4137(5) & 0.53473(8) & 0.500(1) & 0.640(1) \\
-Exp. \cite{Davidson_Atoms} & 0.19808 & 0.3425 & 0.30502 & 0.413797 & 0.533967 & 0.500526 & 0.640173 \\
+&&&adiabatic&&&& \\
+IP (DMC) & 0.19814(1) & 0.34256(2) & 0.3049(3) & 0.4138(5) & 0.53475(8) & 0.500(1) & 0.640(1) \\
+&&&non-adiabatic&&&& \\
+IP (DMC) & 0.1981(1) & 0.34257(2) & 0.3049(3) & 0.4137(5) & 0.53473(8) & 0.500(1) & 0.640(1) \\
+IP (Exp.) \cite{Davidson_Atoms} & 0.19808 & 0.3425 & 0.30502 & 0.413797 & 0.533967 & 0.500526 & 0.640173 \\
 \hline
 \end{tabular}
 \footnotetext[1]{The ionic ground state energies are calculated by adding ionization potentials in Table XII to the atomic ground state energies in Table XI from \cite{Davidson_Atoms} }
-\caption{\textbf{Ionization Energies} Fixed-Node DMC was performed with and without the adiabatic assumption and the energies for each atom and ion is reported in units of Hartree. The label (full) means we treat both electrons and ions quantum mechanically. \label{tab:ionization}}
+\caption{\textbf{Ionization Energies} Fixed-Node DMC was performed with and without the adiabatic assumption and the energies for each atom and ion is reported in units of Hartree. The ionization potentials are reported in the last section of the table with the experimental values at the end \label{tab:ionization}}
 \end{table*}
  
 \subsection{Atomization Energies}
@@ -126,14 +128,18 @@ The ground state energies of first row hydrides are reported in Table \ref{tab:a
 \begin{tabular}{*{1}{*{7}{c}}}
 \hline\hline
 $\text{Molecule}$ & $\text{LiH }(^1\Sigma^+)$ & $\text{BeH }(^2\Sigma^+)$ & $\text{BH }(^1\Sigma^+)$ & $\text{CH }(^2\Pi)$ & $\text{OH }(^2\Pi)$ & $\text{HF }(^1\Sigma^+)$ \\ \hline
-This Work & $\text{-8.070521(7)}$ & $\text{-15.24793(1)}$ & $\text{-25.28868(2)}$ & $\text{-38.4781(1)}$ & $\text{-75.7352(1)}$ & $\text{-100.44941(6)}$ \\
+&&&adiabatic&&& \\
+FN-DMC & $\text{-8.070521(7)}$ & $\text{-15.24793(1)}$ & $\text{-25.28868(2)}$ & $\text{-38.4781(1)}$ & $\text{-75.7352(1)}$ & $\text{-100.44941(6)}$ \\
 $E_{\text{ref}}$ \footnotemark[1] \cite{Adamowicz_LiH,Koput_BeH,Miliordos_BH,Davidson_Atoms,Feller_Corrections} & $\text{-8.07045}$ & $\text{-15.247846}$ & $\text{-25.287650}$ & $\text{-38.4792(2)}$ & $\text{-75.7382(2)}$ & $\text{-100.4600(3)}$ \\
-This Work (full) & $\text{-8.06620(2)}$ & $\text{-15.24196(7)}$ & $\text{-25.28103(4)}$ & $\text{-38.4704(4)}$ & $\text{-75.7260(4)}$ & $\text{-100.4391(4)}$ \\
+&&&non-adiabatic&&& \\
+FN-DMC & $\text{-8.06620(2)}$ & $\text{-15.24196(7)}$ & $\text{-25.28103(4)}$ & $\text{-38.4704(4)}$ & $\text{-75.7260(4)}$ & $\text{-100.4391(4)}$ \\
 ECG \cite{Bubin_LiH_noBO,Bubin_BeH_noBO,Bubin_BH_noBO} & $\text{-8.0664371(15)}$ & $\text{15.24203(10)}$ & $\text{-25.2803(10)}$ & $\text{N/A}$ & $\text{N/A}$ & $\text{N/A}$ \\
 \hline
+&&&adiabatic&&& \\
 $D_{e}$ & 0.092465(8) & 0.08062(1) & 0.13491(2) & 0.13361(2) & 0.16944(4) & 0.21781(6) \\
 Feller 2008\footnotemark[2] \cite{Feller_Corrections} & 0.09262(5) & 0.0809(4) & 0.1354(2) & 0.1342(2) & 0.1709(2) & 0.2258(3) \\
-$D_{e}$ (full) & 0.08905(2)  & 0.07580(7)  & 0.12886(5) & 0.1279(7) & 0.16317(4) & 0.21037(5) \\
+&&&non-adiabatic&&& \\
+$D_{e}$ & 0.08905(2)  & 0.07580(7)  & 0.12886(5) & 0.1279(7) & 0.16317(4) & 0.21037(5) \\
 Feller 2008\footnotemark[3] \cite{Feller_Corrections} & 0.08940(5) & 0.0761(4) & 0.1299(2) & 0.1276(2) & 0.1622(2) & 0.2166(3)\\
 Exp. \cite{CCCBDB} & 0.08874(38) & 0.0826(11) & 0.1281(37) & 0.1275(5) & 0.1622(1) & 0.2158(3) \\
 \hline\hline
