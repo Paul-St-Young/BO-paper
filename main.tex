@@ -1,4 +1,4 @@
-\documentclass[aps,prl,superscriptaddress,groupedaddress]{revtex4}
+\documentclass[aps,prl,superscriptaddress,groupedaddress,twocolumn]{revtex4}
 \usepackage{graphicx}  % needed for figures
 \usepackage{dcolumn}   % needed for some tables
 \usepackage{bm}        % for math
@@ -12,7 +12,7 @@
 \usepackage[bookmarks]{hyperref}
 %\usepackage{siunitx} % for decimal alignment in tables
 %\usepackage{arydshln} % for dashed line in tables
-
+%test
 % avoids incorrect hyphenation, added Nov/08 by SSR
 \hyphenation{ALPGEN}
 \hyphenation{EVTGEN}
@@ -25,14 +25,25 @@
 \maketitle
 
 \section{Introduction}
+There has been several recent discoveries that suggest that quantum wave functions, which include both electron and ionic degrees of freedom, have many interesting properties that have yet to be explored.  This includes the development of equations that exactly factorize a wave function into electron and ionic components, the disappearance of conical intersections in wave functions of model systems, and the use of quantum entanglement to study electronic and ionic density matrices.  Extending such studies to realistic systems would be of broad interest and considerably expand our understanding of electron-ion systems.   However, treatment of \textit{ab initio} electron-ion systems is difficult and applications have been limited.   The most accurate simulations of electron-ion wave functions are generally done with very specialized wave functions, which are limited to small systems sizes.  
 
+As a framework to address these problems in general realistic systems, we recently demonstrated that quantum Monte Carlo can be combined with quantum chemistry techniques to treat electron-ion wave functions.  We showed that this method could be used to treat realistic systems much larger than previously simulated, and we demonstrated that all of this could be done while maintaing a highly accurate wave function.  We extend our previous work by considering the simulation of a large set of molecules.  We calculate ionization energies and dissociation energies which can be directly compared with previous benchmarking results.    A new technique which involves multiple time steps for different species in the imaginary time propagator is developed and tested.  We also consider other estimators and the errors associated by using a mixed estimator.
 
 \section{Method}
 
 \subsection{Fixed-Node Diffusion Monte Carlo (FN-DMC)}
-Diffusion Monte Carlo is a projector method that evolves a trial wavefunction with the exact Hamiltonian in imaginary time and projects out the ground-state wavefunction in the infinite time limit. The trial wavefunction is often produced by some other mean field method such as Hartree-Fock (HF) or Density Functional Theory (DFT). The more popular variant (FN-DMC) introduces the fixed-node approximation to overcome the sign-problem suffered in fermion problems due to the presence of nodes in the ground-state wavefunction. FN-DMC is a simple but powerful method, since its accuracy is only limited by the quality of the nodal surface of the trial wavefunction and the finite length of the calculation. The uncertainty in the obtained ground-state energy is statistically controlled and may be shrunk arbitrarily by increasing computation time. If the trial wavefunction has the same nodal surface as the exact ground-state wavefunction, the final ground-state energy will be exact with zero variance. It should be noted that even with an approximate nodal surface, FN-DMC will still produce an excellent approximation of the exact ground-state energy, albeit with rather large variance if the quality of the trial function is low. In addition, since the exact Hamiltonian is used, the FN-DMC method is variational, that is, even when the nodes of the trial wavefunction are not exact the result will be a rigorous upper bound to the exact ground-state energy.
+Diffusion Monte Carlo is a projector method that evolves a trial wavefunction with the exact Hamiltonian in imaginary time and projects out the ground-state wavefunction in the infinite time limit. 
+%The trial wavefunction is often produced by some other mean field method such as Hartree-Fock (HF) or Density Functional Theory (DFT). 
+Typically the fixed-node approximation is introduced to overcome the sign-problem suffered in fermion simulations. %due to the presence of nodes in the ground-state wavefunction. 
+%FN-DMC is a powerful method, since its accuracy is only limited by the quality of the nodal surface of the trial wavefunction and the finite length of the calculation. 
+%The uncertainty in the obtained ground-state energy is statistically controlled and may be shrunk arbitrarily by increasing computation time.
+ If the trial wavefunction has the same nodal surface as the exact ground-state wavefunction, the final ground-state energy will be exact. It should be noted that even with an approximate nodal surface, FN-DMC will still produce an excellent approximation of the exact ground-state energy. 
+ %albeit with rather large variance if the quality of the trial function is low. 
+ In addition, since the exact Hamiltonian is used, the FN-DMC method is variational, that is, even when the nodes of the trial wavefunction are not exact the result will be a rigorous upper bound to the exact ground-state energy.
 
-Due to the introduction of linear optimization method by Nightingale et. al.\cite{Nightingale_Linear} and Umrigar et. al.\cite{Umrigar_Linear}, one can systematically improve the wave function ansatz generated by quantum chemistry calculations to obtain high quality wave functions for atoms and molecules as was done by Brown\cite{Brown_Bench} and Toulouse\cite{Toulouse_Bench}. However, in these benchmark studies, the authors always worked within the adiabatic assumption, i.e. only the electron Hamiltonian is used in evolving the trial wavefunction in imaginary time, while the ions are "clamped" to their equilibrium positions. Such an assumption is not fundamentally required by FN-DMC. It's inclusion is mostly due to a lack of mean field theories that include non-adiabatic effects. Although there is significant effort in the quantum chemistry community to develop such methodology as mentioned in the introduction, until a standardized package is developed we will have to rely on modification of the QMC algorithm itself to include non-adiabatic effects. To this end, we will use the technique developed by Tubman et. al. \cite{Tubman_ECG} to construct a high quality all-electron-ion wavefunction from an optimized all-electron wavefunction.
+Due to advances in wave function optimization, it is now possible to optimize thousands of wave function parameters simultaneously with variational Monte Carlo.   %the introduction of linear optimization method by Nightingale et. al.\cite{Nightingale_Linear} and Umrigar et. al.\cite{Umrigar_Linear},
+% one can systematically improve the wave function ansatz generated by quantum chemistry calculations to obtain high quality wave functions for atoms and molecules as was done by Brown\cite{Brown_Bench} and Toulouse\cite{Toulouse_Bench}. 
+However, in these benchmark studies, the authors always worked within the adiabatic assumption, i.e. only the electron Hamiltonian is used in evolving the trial wavefunction in imaginary time, while the ions are "clamped" to their equilibrium positions. Such an assumption is not fundamentally required by FN-DMC. It's inclusion is mostly due to a lack of mean field theories that include non-adiabatic effects. Although there is significant effort in the quantum chemistry community to develop such methodology as mentioned in the introduction, until a standardized package is developed we will have to rely on modification of the QMC algorithm itself to include non-adiabatic effects. To this end, we will use the technique developed by Tubman et. al. \cite{Tubman_ECG} to construct a high quality all-electron-ion wavefunction from an optimized all-electron wavefunction.
 
 \subsection{Electron Wavefunction and Optimization}
 We followed the basic strategies of Umrigar et. al.\cite{Umrigar_Alleviation,Toulouse_Bench} and Needs et. al. \cite{Brown_Bench,Seth_Bench} in generating our all-electron wavefunctions. The initial guess for the wavefunction is generated from Complete Active Space Self-Consistent Field (CASSCF) \cite{Chaban_MCSCF,Szabo} calculation using the quantum chemistry package GAMESS-US\cite{GAMESS}. The optimized orbitals are then used in a Second Order Configuration Interaction (SOCI) calculation to generate a series of Configuration State Functions (CSF). This process is described in more detail in \cite{Clark_Bench}. The multi-CSF expansion of the wavefunction generated by GAMESS can be expressed in the following form
@@ -159,6 +170,6 @@ These calculations also verified the validity of the "dragged-node" approximatio
 The authors would like to thank Mike Pak for useful discussions. This work was supported by the U.S. Department of Energy grant No. 1-485267-244000-191100 as part of the Scientific Discovery through Advanced Computing (SciDAC) program. We used the Extreme Science and Engineering Discovery Environment (XSEDE), which is supported by the National Science Foundation Grant No. OCI-1053575 and resources of the Oak Ridge Leadership Computing Facility (OLCF) at the Oak Ridge National Laboratory, which is supported by the Office of Science of the U.S. Department of Energy under Contract No. DE-AC05-00OR22725.
 
 \pagebreak
-\bibliographystyle{unsrt}
+%\bibliographystyle{unsrt}
 \bibliography{ref}
 \end{document}
