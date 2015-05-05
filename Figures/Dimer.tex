@@ -1,3 +1,9 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{calc} % for tikz calculations
+\usetikzlibrary{arrows,decorations.markings} % make arrow head bigger
+\begin{document}
+
 \begin{tikzpicture}
 % define arrow head
 [
@@ -43,10 +49,17 @@
 \node at (e1) [below right] {$e^-$};
 
 % angle
-\draw[dotted] (H1) -- (\a,\s); 
-\draw[dotted] (H1) -- (H); 
-\draw[dotted] (\a,0) -- ($(e)-(0,\s)$); 
-\draw[dotted] (\a,0) -- ($(e1)$);
-\draw[domain=0:12] plot ({0.5*\a*cos(\x)}, {0.5*\a*sin(\x)+\s}) node [below right] {$\theta$};
-\draw[domain=0:-20] plot ({0.2*\a*cos(\x)+\a}, {0.2*\a*sin(\x)}) node [right] {$\theta$};
+\draw[postaction={decorate}] ($(H)+(2*\R,0)$) -> ($(H)-(0,\s)+(2*\R,0)$) node [above right] {$\vec{s}$};
+\draw ($(H)+(\R,0)$) -- ($(H)+(3*\R,0)$);
+\draw ($(H)-(0,\s)$) -- ($(H)+(3*\R,0)-(0,\s)$);
+\draw[dotted] (0,0) -- ($(H)-(0,\s)$); 
+\draw[dotted] (0,0) -- ($(e)-(0,\s)$); 
+\draw[dotted] (0,0) -- ($(e1)$);
+\draw[domain=0:10] plot ({0.3*\a*cos(\x)}, {0.3*\a*sin(\x)}) node [right] {$\theta$};
+\draw[domain=0:-6] plot ({0.5*\a*cos(\x)}, {0.5*\a*sin(\x)}) node [right] {$\theta$};
+
+% subplot marking
+\node at (5.5,3) {(b)};
 \end{tikzpicture}
+
+\end{document}
