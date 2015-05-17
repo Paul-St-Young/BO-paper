@@ -1,34 +1,88 @@
 \begin{table*}[t!]
 \setlength{\extrarowheight}{1pt}
 \begin{threeparttable}
+
 \caption{Ground state energies for atoms and ions, and the ionization energies: Fixed-Node DMC results of this work (FN-DMC) for atoms and ions with and without the adiabatic assumption. The ionization potentials (IP) are reported in the last section of the table with the experimental values. Energies are given in units of Hartree. \label{tab:ionization}}
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} c*{10}{D{.}{.}{6}} }
+\begin{tabular}
+% siunitx setup
+{
+ l
+ S[table-format=1.6]
+ S[table-format=5.6]
+ S[table-format=5.6]
+ S[table-format=4.6]
+ S[table-format=4.6]
+ S[table-format=4.6]
+ S[table-format=4.6]
+ S[table-format=4.6]
+}
+
 \hline\hline
-Atom & .$Li$(^2$S$) & .$Be$(^1$S$) & .$B$(^2$P$) & .$C$(^3$P$) & .$N$(^4$S$) & .$O$(^3$P$) & .$F$(^2$P$) \\ \hline
-&&.$clamped$&$nuclei$&&&& \\
+\multicolumn{1}{c}{Atom} & 
+\multicolumn{1}{c}{Li$(^2$S)} &
+\multicolumn{1}{c}{Be$(^1$S)} &
+\multicolumn{1}{c}{B$(^2$P)} &
+\multicolumn{1}{c}{C$(^3$P)} &
+\multicolumn{1}{c}{N$(^4$S)} &
+\multicolumn{1}{c}{O$(^3$P)} &
+\multicolumn{1}{c}{F$(^2$P)} \\ 
+\hline
+\multicolumn{1}{c}{} & 
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{clamped nuclei} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} \\
 FN-DMC & -7.478056(4) & -14.66732(1) & -24.65377(1) & -37.84449(2) & -54.58858(3) & -75.06576(4) & -99.7316(1) \\
 Seth DMC \cite{Seth_Bench} & -7.478067(5) & -14.667306(7) & -24.65379(3) & -37.84446(6) & -54.58867(8) & -75.0654(1) & -99.7318(1) \\
 Davidson 1993 \cite{Davidson_Atoms} &  -7.47807 & -14.66736 & -24.65391 & -37.8450 &-54.5892 & -75.0673 & -99.7339 \\
-&&&non.$adiabatic$&&&& \\
+\multicolumn{1}{c}{} & 
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{non-adiabatic} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} \\
 FN-DMC & -7.47742(1) & -14.66643(2) & -24.65244(3) & -37.84277(6) & -54.58655(8) & -75.0631(1) & -99.7290(4) \\
 \hline
-Ion & .$Li$^+(^1$S$) & .$Be$^+(^2$S$) & .$B$^+(^1$S$) & .$C$^+(^2$P$) & .$N$^+(^3$P$) & .$O$^+(^4$S$) & .$F$^+(^3$P$) \\ \hline
-&&.$clamped$&$nuclei$&&&& \\
-FN-DMC & -7.279919(4) & -14.324753(6) & -24.34884(1) & -37.43075(2) & -54.05376(3) & -74.56588(4) & -99.0913(1) \\
-Seth DMC \cite{Seth_Bench} & -7.279914(3) & -14.324761(3) & -24.34887(2) & -37.43073(4) & -54.05383(7) & -74.56662(7) & -99.0911(2) \\
-Davidson 1993 \tnote{a} \cite{Davidson_Atoms} & -7.27999 & -14.3249 & -24.3489 & -37.4312 & -54.0552 & -74.5668 & -99.0937 \\
-&&&non.$adiabatic$&&&& \\
-FN-DMC & -7.2793(1) & -14.32386(2) & -24.34750(3) & -37.42904(4) & -54.05182(9) & -74.56336(8) & -99.0885(3) \\
+
+\multicolumn{1}{c}{Ion} & 
+\multicolumn{1}{c}{$\text{Li}^+(^1$S)} &
+\multicolumn{1}{c}{$\text{Be}^+(^2$S)} &
+\multicolumn{1}{c}{$\text{B}^+(^1$S)} &
+\multicolumn{1}{c}{$\text{C}^+(^2$P)} &
+\multicolumn{1}{c}{$\text{N}^+(^4$S)} &
+\multicolumn{1}{c}{$\text{O}^+(^3$P)} &
+\multicolumn{1}{c}{$\text{F}^+(^2$P)} \\ 
 \hline
-&&.$clamped$&$nuclei$&&&& \\
-IP (FN-DMC) & 0.19814(1) & 0.34257(1) & 0.30493(1) & 0.41374(3) & 0.53482(4) & 0.49988(5) & 0.6403(1) \\
-&&&non.$adiabatic$&&&& \\
-IP (FN-DMC) & 0.1981(1) & 0.34257(3) & 0.30494(4) & 0.41373(7) & 0.5347(1) & 0.4997(1) & 0.6405(5) \\
-IP (Exp.) \cite{CCCBDB} & 0.19808 & 0.3425 & 0.30502 & 0.413797 & 0.533967 & 0.500526 & 0.640173 \\
+\multicolumn{1}{c}{} & 
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{clamped nuclei} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} \\
+FN-DMC & -7.47742(1) & -14.66643(2) & -24.65244(3) & -37.84277(6) & -54.58655(8) & -75.0631(1) & -99.7290(4) \\
+Seth DMC \cite{Seth_Bench} & -7.279914(3) & -14.324761(3) & -24.34887(2) & -37.43073(4) & -54.05383(7) & -74.56662(7) & -99.0911(2) \\
+Davidson 1993 \tnote{a} \cite{Davidson_Atoms} & -7.27999 & -14.3249 & -24.3489 & -37.4312 & -54.0552 & -74.5668 & -99.0937 \\ 
+\multicolumn{1}{c}{} & 
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{non-adiabatic} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} \\
+FN-DMC & -7.2793(1) & -14.32386(2) & -24.34750(3) & -37.42904(4) & -54.05182(9) & -74.56336(8) & -99.0885(3) \\
 \hline\hline
-\end{tabular*}
+\end{tabular}
 \begin{tablenotes}
 \item[a] The ionic ground state energies are calculated by adding ionization potentials in Table XII to the atomic ground state energies in Table XI from Ref.~\cite{Davidson_Atoms}.
 \end{tablenotes}
+
 \end{threeparttable}
 \end{table*}

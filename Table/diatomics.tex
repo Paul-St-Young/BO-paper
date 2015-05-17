@@ -2,25 +2,69 @@
 \setlength{\extrarowheight}{1pt}
 \begin{threeparttable}
 \caption{Ground state energies and atomization energies: Fixed-Node DMC results of this work for all first row hydrides with and without the adiabatic assumption. Energies are given in units of Hartree. \label{tab:atomization}}
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} c*{7}{D{.}{.}{5}} }
+\begin{tabular}
+% siunitx setup
+{
+ l
+ S[table-format=1.6]
+ S[table-format=6.6]
+ S[table-format=5.6]
+ S[table-format=4.6]
+ S[table-format=4.6]
+ S[table-format=4.6]
+ S[table-format=4.6]
+}
+
 \hline\hline
-Molecule & .$LiH$(^1\Sigma^+) & .$BeH$(^2\Sigma^+) & .$BH$(^1\Sigma^+) & .$CH$(^2\Pi) & .$OH$(^2\Pi) & .$HF$(^1\Sigma^+) \\ \hline
-&&.$clamped$&$nuclei$&&& \\
+\multicolumn{1}{c}{Molecule} & 
+\multicolumn{1}{c}{LiH$(^1\Sigma^+)$} &
+\multicolumn{1}{c}{BeH$(^2\Sigma^+)$} &
+\multicolumn{1}{c}{BH$(^1\Sigma^+)$} &
+\multicolumn{1}{c}{CH$(^2\Pi)$} &
+\multicolumn{1}{c}{OH$(^2\Pi)$} &
+\multicolumn{1}{c}{HF$(^1\Sigma^+)$} \\ 
+\hline
+\multicolumn{1}{c}{} & 
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{clamped nuclei} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} \\
 E (this work) & -8.070521(7) & -15.24793(1) & -25.28868(2) & -38.4781(1) & -75.7352(1) & -100.4556(2) \\
 $E_{\text{ref}}$ \tnote{a} \cite{Adamowicz_LiH,Koput_BeH,Miliordos_BH,Davidson_Atoms,Feller_Corrections} & -8.07045 & -15.247846 & -25.287650 & -38.4792(2) & -75.7382(2) & -100.4600(3) \\
-&&&non.$adiabatic$&&& \\
+\multicolumn{1}{c}{} & 
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{non-adiabatic} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} \\
 E (this work) & -8.06620(2) & -15.24196(7) & -25.28103(4) & -38.4704(4) & -75.7237(4) & -100.4445(5) \\
 ECG \cite{Bubin_LiH_noBO,Bubin_BeH_noBO,Bubin_BH_noBO} & -8.0664371(15) & -15.24203(10) & -25.2803(10) & N/A & N/A & N/A \\
 \hline
-&&.$clamped$&$nuclei$&&& \\
+
+\multicolumn{1}{c}{} & 
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{clamped nuclei} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} \\
 $D_{e}$ (this work) & 0.092465(8) & 0.08062(1) & 0.13491(2) & 0.13361(2) & 0.16944(4) & 0.2240(2) \\
 Feller 2008\tnote{b} \cite{Feller_Corrections} & 0.09262(5) & 0.0809(4) & 0.1354(2) & 0.1342(2) & 0.1709(2) & 0.2258(3) \\
-&&&non.$adiabatic$&&& \\
+\multicolumn{1}{c}{} & 
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{non-adiabatic} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} \\
 $D_{0}^0$ (this work) & 0.08905(2)  & 0.07580(7)  & 0.12886(5) & 0.1279(7) & 0.1610(4) & 0.2158(6) \\
 Feller 2008\tnote{c} \cite{Feller_Corrections} & 0.08940(5) & 0.0761(4) & 0.1299(2) & 0.1276(2) & 0.1622(2) & 0.2166(3)\\
 Exp. \cite{CCCBDB} & 0.08874(38) & 0.0826(11) & 0.1281(37) & 0.1275(5) & 0.1622(1) & 0.2158(3) \\
 \hline\hline
-\end{tabular*}
+\end{tabular}
 \begin{tablenotes}
 \item[a] For the smaller systems (LiH, BeH and BH), ECG studies provide the best reference energies. For CH, OH and HF, we combined the atomic energies in Ref.~\cite{Davidson_Atoms} with the atomization energies in \cite{Feller_Corrections} to produce the reference energies.
 \item[b] The non-relativistic atomization energy in the adiabatic limit are calculated by subtracting the scalar relativistic, spin-orbit coupling and zero-point energy corrections from the reference energies in Table VI of Ref.~\cite{Feller_Corrections}.

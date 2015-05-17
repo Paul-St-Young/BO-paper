@@ -1,23 +1,9 @@
 \documentclass[pra,superscriptaddress,groupedaddress,twocolumn]{revtex4}
 \usepackage{graphicx}  % needed for figures
-\usepackage{dcolumn}   % needed for some tables
-\usepackage{bm}        % for math
-\usepackage{amssymb,amsmath} % for math
-\usepackage{tikz} % for drawing
-%\usepackage{subfig} % for subfigure
-\usetikzlibrary{calc} % for tikz calculations
-\usetikzlibrary{arrows,decorations.markings} % make arrow head bigger
-\usepackage{array} % for changing table height
-\usepackage{comment}
+\usepackage{siunitx}   % for decimal alignment in tables
+\usepackage{bm,amssymb,amsmath}    % for math
 \usepackage[bookmarks]{hyperref}
 \usepackage{threeparttable}
-%\usepackage{siunitx} % for decimal alignment in tables
-%\usepackage{arydshln} % for dashed line in tables
-
-% avoids incorrect hyphenation, added Nov/08 by SSR
-\hyphenation{ALPGEN}
-\hyphenation{EVTGEN}
-\hyphenation{PYTHIA}
 
 \begin{document}
 
@@ -36,30 +22,17 @@
 \input{Table/atoms}
 
 \subsection{Ground State Energies}
-
-Ground state energies are calculated for first row atoms and ions with and without the adiabatic assumption, see Table \ref{tab:ionization}. We first performed a CAS(m,n) calculation (m electrons into n active orbitals) with the ground-state equilibrium geometries taken from experimental data \cite{CCCBDB}. The MCSCF optimized orbitals are then used in a SOCI calculation that includes single and double excitations of the m electrons into all of the available valance orbitals provided by the basis. We include all CSFs with coefficients bigger than some cutoff $\epsilon$ to lend reasonable flexibility to the wavefunction during optimization. We include as many CSFs as possible to maximize the flexibility of the wavefunction. However, the inclusion of too many CSFs with small expansion coefficients can introduces noise as they requires a large number of samples in the optimization step to be optimized. We have chosen to restrict the number of CSFs in the wave function to be $\sim$1000 in all systems. Optimization was performed with roughly $10^7$ statistically independent samples and we chose a cost function consisting of equal parts average local energy and reweighted variance. We performed timestep extrapolation for all of the tested systems. Five timesteps from $0.005~\text{Ha}^{-1}$ to $0.001~\text{Ha}^{-1}$ were used for all systems in the adiabatic FN-DMC.
-
-The clamped nuclei ground state FN-DMC energies  are consistently equal across all systems, within error bars, with a recent QMC benchmark study~\cite{Seth_Bench}. This is an interesting coincidence since we used a different approach in optimizing our wave functions.   In particular our large multi-determinant expansions, can be compared with the approach used by Seth {\it et al.}~\cite{Seth_Bench} which used moderately-sized multi-determinant expansions ($\sim$ 100 CSF) with a backflow transformation. 
- 
- For the atomic systems, there are two ECG calculations of non-adiabatic ground state energies we can use as benchmark.  The non-adiabatic ground-state energies for Be and B ($-14.66643(2)$~Ha and $-24.65244(3)$~Ha) are in agreement with ECG results  to an accuracy of less than 0.2 mHa (-$14.66643544$~Ha \cite{Bubin_BeH_noBO} and -$24.652598$~Ha~\cite{Bubin_BH_noBO}).
-
-We performed a study over diatomic systems, the results of which are presented in Table \ref{tab:atomization}. For these diatomic systems, there are Feller benchmark results~\cite{Feller_Corrections}, for which we can compare our results againsts. 
-
-To make the comparison against the semi-empirical results, we took the reference energies from the last column of Table VI of Ref.~\cite{Feller_Corrections} and subtracted the corrections in the $\Delta E_{SR}$ and SO columns for comparison with our non-adiabatic energies.  For the comparison with our adiabatic energies we subtracted the DBOC and ZPE corrections.  Corrections from spin-orbit coupling and relativistic effects are not used, as they are not included in our Hamiltonian.
+\input{Section/ground}
 
 \subsection{Ionization Energies}
 
 \begin{figure}[h]
-\includegraphics[scale=.4]{Figures/ionization}
+\includegraphics[scale=.45]{Figures/ionization}
 \caption{Calculated ionization energies compared to experimental data. The calculated energies are all within 1 mHa of experiment.}
 \end{figure}
 
-The ionization energies are listed in Table \ref{tab:ionization} and they agree well with experimental results. Notice that even though ground state energies change significantly with the inclusion of non-adiabatic effects, the ionization energies match with or without the adiabatic assumption. This suggests that for atomic systems, coupling between valence electron and ion motions is small. The difference in ground state energies can be entirely attributed to the zero point motion of the nuclei. Physically, this means that for all first row atoms, the outer most electron is screened from the nucleus and all of the energy required for its removal can be attributed to its interaction with the rest of the electrons in the atom.
+\input{Section/ionization}
 
-For the LiH molecule we are also interested in calculating the electron affinity for comparison to ECG results. We calculated the ground state energy of LiH$^-$ to be $-8.08220(2)$~Ha for the case of clamped nuclei.  With non-adiabatic effects included our result is  $-8.07811(3)$~Ha. Our non-adiabatic result is in good agreement with a previous ECG study \cite{Bubin_LiH_noBO} which reported a value of $-8.07856887$~Ha. We report an electron affinity of $0.01191(4)$~Ha which is can be compared to the ECG prediction of $0.012132(2)$~Ha and agrees with experiment $0.0126(4)$~Ha.  We note that $\text{LiH}$ ground state energies which we compare against are mislabeled in Ref.\cite{Bubin_LiH_noBO}, with $\text{LiH}^-$ and LiD being switched.
-
-
- 
 \subsection{Atomization Energies}
 
 \begin{figure}
@@ -72,20 +45,15 @@ For the LiH molecule we are also interested in calculating the electron affinity
 \caption{Atomization energies of first row hydrides obtained with FN-DMC. The adiabatic results are estimated by adding zero-point energies from \cite{Feller_Corrections} to the clampped-ion energies as exact corrections.}
 \end{figure}
 
-The ground state energies for various hydrides are reported in Table \ref{tab:atomization}. The energies calculated for clamped nuclei are on par with the best available quantum chemistry results \cite{Adamowicz_LiH,Koput_BeH,Miliordos_BH}. The energies calculated without the adiabatic assumption are in agreement with the ECG results for LiH, BeH to within 0.4 mHa.   In general for small systems, ECG results and typically orders of magnitude more accurate than the best QMC and quantum chemistry simulations.  However, with BH being one of the largest ECG simulations performed, the QMC results are actually lower in energy, in this case by 1 mHa.  For the systems CH, OH, and HF, there are no explicit simulations we can compare against, and we rely on the experimental results and the results with estimated non-adiabatic corrections for comparison.  Our biggest errors appear to occur for BeH and OH.   For the case of BeH our agree with accuracy higher than 1 mHa with both the ECG results and semi-empirical benchmarking.  In particular the ECG results are converged to more digits than the experimental error bar, and it is likely the experimental reference has errors on the order of 5 mHa.   For the case of OH, our error is on the order of 1 mHa, which isn't unexpected as our clamped nuclei ground state energy is roughly 3 mHa from the actual estimated ground state energy.
+\input{Section/atomization}
  
 \input{Table/diatomics}
 
 \section{Using multiple time-steps}
-The results of this work given in Tables \ref{tab:ionization} and \ref{tab:atomization} were obtained from simulations where we moved the nuclei as often as the electrons, i.e., we have used the same time-step for each particle. However, we could also use different sized time-steps for each different particle species as long as they are, e.g., multiples of the smallest time-step. Due to the Trotter expansion \cite{lester1} this only affects the diffusion term in the diffusion Monte Carlo method, not the branching part. Thus, while applying the kinetic projection operator of the electrons for $M$ times with time-step $\tau$, a heavier particle can use a kinetic projector with time-step $\beta=M\tau$, which is applied only once. Our numerical tests with LiH molecule show that even with $M=1000$ for the proton, and $M=4000$ for the Li nucleus the results coincide with those shown in Table II, in which that nuclei were moved as often as the electrons. However, we believe that for the Li nucleus $M$ could be larger, since in the diffusion term the exponential has a prefactor of $m/2\tau$. Therefore, it is possible that $M$ could be roughly equal to the mass of the particle, since then the prefactor $m/2M\tau$ would roughly be equal to the one found accurate for the electrons.
-
-The major benefit of this ''multi-time-stepping'' procedure is that going beyond the dragged-node approximation one needs to calculate on-the-fly updates for the electronic wave function each time the nuclei are moved. Thus, the possibility to make external program calls only every thousand steps in case of nonadiabatic hydrogen, and every four thousand (or even ten thousand) steps in case of Li nuclei will enable even more accurate calculations for more complex systems.
-
+\input{Section/multits}
 
 \section{Conclusion}
-We calculated the ground-state energies of first row atoms and their corresponding ions and hydrides to an accuracy of $0.1$ mHa both with and without the adiabatic assumption. We found the ionization energies of the atoms to be independent of the adiabatic assumption, suggesting that the energy difference between the adiabatic and non-adiabatic ground states is due to the zero point motion of the nuclei at the energy scales of interest. The atomization energies of simple hydrides, however, were significantly different in the adiabatic than in the non-adiabatic limit.   We showed that it is necessary to include non-adiabatic effects to accurately predict the experimental values of atomization energies for these simple hydrides.
-
-These calculations also verified the validity of our wave function ansatz, namely it does indeed produce a high quality electron-ion trial wavefunction from a good electron wavefunction. This technique also has the potential to solve interesting larger-scale problems due to its ease of implementation as well as the polynomial scaling in computational time with respect to the number of electrons.  This technique can be generalized quite easily to deal with larger systems. 
+\input{Section/conclusion} 
 
 \section{Acknowledgment}
 \input{Section/acknowledgment}
