@@ -11,7 +11,7 @@ The are several different approaches for generating high quality wave functions 
 \begin{align}
 \Psi_{SOCI}(\vec{r})=\sum\limits_{i=1}^{N_{CSF}}\alpha_i\phi_i(\vec{r}), \label{eq:psi_gms}
 \end{align}
-where $\vec{r}$ refers to the spacial coordinates of all the electrons. $\phi_i(\vec{r})$ are the CSF generated from SOCI. We used the cc-pV5Z basis for all the atomic systems and Roos Augmented Triple Zeta ANO basis for molecular systems~\cite{dunning,roos}. A Jastrow factor is then added to the wave function to correlate electron motion and smooth out the divergence in the local energy near the ions by imposing the cusp condition \cite{Kato}. Our Jastrow factor contains one and two body terms. The full wave function being optimized is then
+where $\vec{r}$ refers to the spacial coordinates of all the electrons. $\phi_i(\vec{r})$ are the CSF generated from SOCI. We used the cc-pV5Z basis for all the atomic systems and Roos Augmented Triple Zeta ANO basis for molecular systems~\cite{dunning,roos}. We then impose cusp condition on each molecular orbital~\cite{cusp} and add a Jastrow factor to the wave function to include electron correlation~\cite{Kato}. Our Jastrow factor contains one, two and three body terms. The full wave function being optimized is then
 \begin{align}
 \Psi_e(\vec{r})=e^{J(\vec{r},\vec{\beta})}\sum\limits_{i=1}^{N_{CSF}}\alpha_i\phi_i(\vec{r})\label{eq:psie}
 \end{align}
