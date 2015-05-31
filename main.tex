@@ -17,7 +17,7 @@ In this work we calculate the non-relativistic ground-state energies of atomic a
 \section{Introduction}
 There have been several recent discoveries~\cite{cederbaum1,gross2014,boent} that suggest that quantum wave functions, which include both electronic and ionic degrees of freedom, have many interesting properties that have yet to be explored.  This includes the development of equations that exactly factorize a wave function into electron and ionic components~\cite{cederbaum1}, the disappearance of conical intersections in wave functions of model systems~\cite{gross2014}, and the use of quantum entanglement to study electronic and ionic density matrices~\cite{boent}.  Extending such studies to realistic systems is of broad interest and will considerably expand our understanding of electron-ion systems. However, treatment of \textit{ab initio} electron-ion systems is challenging and applications have thus been limited.   The most accurate simulations of electron-ion wave functions are generally done with very specialized wave functions, which are limited to rather small systems \cite{mitroy2013}.  
 
-As a framework to address these problems in general realistic systems, we recently demonstrated that quantum Monte Carlo (QMC) can be combined with quantum chemistry techniques to generate electron-ion wave functions~\cite{Tubman_ECG}.  We treated realistic molecular systems and demonstrated that our method can be scaled to larger systems than previously considered while maintaining a highly accurate wave function. In the following we extend our previous work by considering the simulation of a larger benchmark set of atoms and molecules.  We calculate ionization energies and dissociation energies which can be directly compared with previous benchmarking results.  We also consider using multiple time steps for different species in the imaginary time propagator, which is also developed and tested.  %Additionally we consider other estimators and the errors associated by using a mixed estimator.
+As a framework to address these problems in general realistic systems, we recently demonstrated that quantum Monte Carlo (QMC) can be combined with quantum chemistry techniques to generate electron-ion wave functions~\cite{Tubman_ECG}.  We treated realistic molecular systems and demonstrated that our method can be scaled to larger systems than previously considered while maintaining a highly accurate wave function. In the following we extend our previous work by considering the simulation of a larger benchmark set of atoms and molecules.  We calculate ionization energies and dissociation energies which can be directly compared with previous benchmarking results.
 
 \section{Method}
 \subsection{Fixed-Node Diffusion Monte Carlo (FN-DMC)}
@@ -85,6 +85,16 @@ We performed a study over diatomic systems, the results of which are presented i
 
 To make the comparison against the thermochemistry benchmark results, we take the reference energies from the last column of Table VI of Ref.~\cite{Feller_Corrections} and subtracted the corrections in the $\Delta E_{SR}$ and SO columns for comparison with our non-adiabatic energies.  For the comparison with our adiabatic energies we subtracted the DBOC and ZPE corrections.  Corrections from spin-orbit coupling and relativistic effects are not used, as they are not included in our Hamiltonian.
 
+\begin{figure}
+\includegraphics[scale=.4]{Figures/atom-nad-ad}
+\caption{Non-adiabatic contribution to ground state energies of atoms and ions. The clamped-ion DMC results are chosen to be the origin of the y-axis. Non-adiabatic contribution shows very little dependence on the presence of the ionized electron.}
+\end{figure}
+
+\begin{figure}
+\includegraphics[scale=.4]{Figures/hydride-ZPE}
+\caption{Non-adiabatic contribution to ground state energies in hydrides. The adiabatic reference energies are calculated by added zero-point contributions from \cite{Feller_Corrections} to our clamped-nuclei results.}
+\end{figure}
+
 \subsection{Ionization Energies}
 
 \begin{figure}[h]
@@ -96,6 +106,8 @@ To make the comparison against the thermochemistry benchmark results, we take th
 The ionization energies are listed in Table \ref{tab:ionization}.  Notice that even though ground state energies change significantly with the inclusion of non-adiabatic effects, the ionization energies match with or without the adiabatic assumption. This suggests that for atomic systems, coupling between valence electron and ion motions is small. The difference in ground state energies can be entirely attributed to the zero point motion of the nuclei. Physically, this means that for all first row atoms, the outer most electron is screened from the nucleus and all of the energy required for its removal can be attributed to its interaction with the rest of the electrons in the atom.
 
 For the LiH molecule we are also interested in calculating the electron affinity for comparison to ECG results. We calculated the ground state energy of LiH$^-$ to be $-8.08220(2)$~Ha for the case of clamped nuclei.  With non-adiabatic effects included our result is  $-8.07811(3)$~Ha. Our non-adiabatic result is in good agreement with a previous ECG study \cite{Bubin_LiH_noBO} which reported a value of $-8.07856887$~Ha. We report an electron affinity of $0.01191(4)$~Ha which is can be compared to the ECG prediction of $0.012132(2)$~Ha and agrees with experiment, $0.0126(4)$~Ha. \footnote{We note that LiH ground state energies which we compare against are mislabeled in Ref.\cite{Bubin_LiH_noBO}, with $\text{LiH}^-$ and LiD being switched.}
+
+\input{Table/diatomics}
 
 \subsection{Atomization Energies}
 
@@ -112,8 +124,6 @@ For the LiH molecule we are also interested in calculating the electron affinity
 \end{figure}
 
 The ground state energies for various hydrides are reported in Table \ref{tab:atomization}. The energies calculated for clamped nuclei are on par with the best available quantum chemistry results \cite{Adamowicz_LiH,Koput_BeH,Miliordos_BH}. The energies calculated without the adiabatic assumption are in agreement with the ECG results for LiH, BeH to within 0.4 mHa. For small systems, ECG results are typically orders of magnitude more accurate than the best QMC and quantum chemistry simulations. However, with BH being one of the largest ECG simulations performed, the QMC results are actually lower in energy, in this case by 1 mHa. For the systems CH, OH, and HF, there are no explicit simulations we can compare against, and we rely on the experimental results and the results with estimated non-adiabatic corrections for comparison. Our biggest errors appear to occur for BeH and OH.   For the case of BeH our agree with accuracy higher than 1 mHa with both the ECG results and semi-empirical benchmarking. In particular the ECG results are converged to more digits than the experimental error bar, and it is likely the experimental reference has errors on the order of 5 mHa.   For the case of OH, our error is on the order of 1 mHa, which isn't unexpected as our clamped nuclei ground state energy is roughly 3 mHa from the actual estimated ground state energy.
- 
-\input{Table/diatomics}
 
 \section{Conclusion}
 We calculated the ground-state energies of first row atoms and their corresponding ions and hydrides to an accuracy of $0.1$ mHa both with and without the adiabatic assumption. We found the ionization energies of the atoms to be independent of the adiabatic assumption, suggesting that the energy difference between the adiabatic and non-adiabatic ground states is due to the zero point motion of the nuclei at the energy scales of interest. The atomization energies of simple hydrides, however, were significantly different in the adiabatic than in the non-adiabatic limit.   We showed that it is necessary to include non-adiabatic effects to accurately predict the experimental values of atomization energies for these simple hydrides.
