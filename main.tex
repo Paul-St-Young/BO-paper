@@ -36,7 +36,7 @@ where $\vec{r}$ refers to the spatial coordinates of all the electrons, $\vec{R}
 \begin{align}
 \psi_e(\vec{r})=e^{J(\vec{r},\vec{\beta})}\Psi_{\text{CISD}}(\vec{r};\vec{R}_e)\label{eq:psie}
 \end{align}
-We optimized the CSF and Jastrow coefficients $\vec{\alpha},\vec{\beta}$ simultaneously with QMCPACK \cite{QMCPACK}. Optimization is performed with the ions clamped to their equilibrium positions. We include all CSFs with coefficients bigger than some cutoff $\epsilon$ to lend reasonable flexibility to the wavefunction during optimization. We include as many CSFs as possible to maximize the flexibility of the wavefunction. However, the inclusion of too many CSFs with small expansion coefficients can introduces noise as they requires a large number of samples in the optimization step to be optimized. We have chosen $\epsilon$ to restrict the number of CSFs in the wave function to be $\sim$1000 in all systems. Optimization was performed with the linear method with roughly $10^7$ statistically independent samples and we chose a cost function consisting of equal parts average local energy and reweighted variance.
+We optimized the CSF and Jastrow coefficients $\vec{\alpha},\vec{\beta}$ simultaneously with QMCPACK \cite{QMCPACK}. Optimization is performed with the ions clamped to their equilibrium positions. We include all CSFs with coefficients bigger than some cutoff $\epsilon$ to lend reasonable flexibility to the wavefunction during optimization. We include as many CSFs as possible to maximize the flexibility of the wavefunction. However, the inclusion of too many CSFs with small expansion coefficients can introduces noise as they requires a large number of samples in the optimization step to be optimized. We have chosen $\epsilon$ to restrict the number of CSFs in the wave function to be $\sim$1000 in all systems. Optimization was performed with the linear method with roughly $10^6$ statistically independent samples and we chose a cost function consisting of equal parts average local energy and reweighted variance.
 
 \subsection{Electron-Ion Wavefunction}
 
@@ -52,10 +52,10 @@ Once a satisfactory electronic wave function has been obtained, we construct the
 \end{align}
 where $\vec{R}$ includes spatial coordinates of all ions. The ionic wave function consists of simple products of Gaussian wave functions over each nuclei pair,
 \begin{align}
-\psi_I(\vec{R})\propto \prod\limits_{i,j>i}e^{-a(\vert \vec{R}-\vec{R}_j\vert-b_{ij})^2},
+\psi_I(\vec{R})\propto \prod\limits_{i,j>i}e^{-a(\vert \vec{R}_i-\vec{R}_j\vert-b_{ij})^2},
 \label{wfs_ions}
 \end{align}
-where $a$ is a coefficient for the ion wave function that we optimize and $b_{ij}$ are taken to be the equilibrium distances between the nuclei. FN-DMC was then performed with the fully optimized electron-ion wave function. We performed timestep extrapolation for all of the tested systems. At least four timesteps from $0.005~\text{Ha}^{-1}$ to $0.001~\text{Ha}^{-1}$ were used for all systems in the adiabatic FN-DMC and $0.001~\text{Ha}^{-1}$ to $0.0001~\text{Ha}^{-1}$ in non-adiabatic FN-DMC.
+where $a$ is a coefficient for the ion wave function that we optimize and $b_{ij}$ are taken to be the equilibrium distances between the nuclei. The equilibrium geometries for BeH and BH are chosen to be the ECG-optimized distances for a comparison with the ECG method and the geometries for the rest of the hydrides are taken from experimental data \cite{CCCBDB}. FN-DMC was then performed with the fully optimized electron-ion wave function. We performed timestep extrapolation for all of the tested systems. At least four timesteps from $0.005~\text{Ha}^{-1}$ to $0.001~\text{Ha}^{-1}$ were used for all systems in the adiabatic FN-DMC and $0.001~\text{Ha}^{-1}$ to $0.0001~\text{Ha}^{-1}$ in non-adiabatic FN-DMC.
 
 Due to the locality of the Gaussian basis set used in the quantum chemistry calculations for constructing the electronic wave function, the nodes change based on the ionic positions, which we have previously called the dragged-node approximation. In particular, the nodes only coincide with those obtained from the quantum chemistry calculation when the ions are at their equilibrium positions $\bar{\psi}_e(\vec{r},\vec{R}_e)=\psi_e(\vec{r})$. Although there are approaches for going beyond this approximation, it was demonstrated to be highly accurate over a range of molecules in previous work.~\cite{Tubman_ECG} For the systems considered here, we can impose various symmetries of the Hamiltonian onto the wave function that arise from the relative motion of the ions. In Fig.~\ref{fig:drag} we demonstrate this strategy for the simple cases of a hydrogen atom and a H$_2^+$ molecular ion. Although the dragged-node technique is developed with atomic and diatomic systems in mind, it is not difficult to generalize it for use in larger systems or even apply to parts of a bigger system, e.g., treating light ions as quantum particles and heavy ions as "clamped". 
 
@@ -64,58 +64,51 @@ Due to the locality of the Gaussian basis set used in the quantum chemistry calc
 
 \begin{figure}
 \centering
-\includegraphics[scale=.4]{Figures/ad-ECG}
-\caption{Clamped-ion FN-DMC ground state energies for $\text{Be}^+$,Be,$\text{B}^+$,B,$\text{C}^+$ relative to clamped-ion ECG references.~\cite{Stanke_Be,Puchalski_Be+,Bubin_B,Bubin_B+,Bubin_C+} These differences provide an estimate for the fixed node errors in these systems. \label{fig:ad-atoms}}
+\includegraphics[scale=.4]{Figures/atom-ECG}
+\caption{FN-DMC ground state energies for $\text{Be}^+$,Be,$\text{B}^+$,B,$\text{C}^+$ relative to ECG references.~\cite{Stanke_Be,Puchalski_Be+,Bubin_BeH_noBO,Bubin_B,Bubin_B+,Bubin_C+} These differences provide an estimate for the fixed node error. \label{fig:atom-ECG}}
 \end{figure}
 
 \begin{figure}
-\centering
-\includegraphics[scale=.4]{Figures/nad-ECG}
-\caption{Non-adiabatic FN-DMC ground state energies for $\text{Be}^+$,Be,$\text{B}^+$,B,$\text{C}^+$ relative to non-adiabatic ECG references.~\cite{Bubin_BeH_noBO,Bubin_B,Bubin_B+,Bubin_C+} These differences provide an estimate for the fixed node errors in these systems. \label{fig:ECG-atoms}}
+\includegraphics[scale=.37]{Figures/atom-nad-ad}
+\caption{Non-adiabatic contribution to ground state energies of atoms and ions. $E_n^{DMC}$ is the non-adiabatic ground state energy whereas $E_c^{DMC}$ is the clamped-ion ground state energy. Non-adiabatic contribution shows very little dependence with the ionized state.}
 \end{figure}
 
 \subsection{Ground State Energies}
-Ground state energies are calculated for first row atoms and ions and hydrides with and without the adiabatic assumption, see Table \ref{tab:ionization} and \ref{tab:atomization}. The ground state geometries for BeH and BH are chosen to be the ECG-optimized distances for a comparison with the ECG method and the geometries for the rest of the hydrides are taken from experimental data \cite{CCCBDB}. For the small systems, Li, Be, B, Be$^+$, B$^+$, C$^+$ and LiH the ECG/Hylleraas results are converged to several digits beyond what can be done with normal quantum chemistry techniques. Thus these results are likely much more accurate than experimental results, and are converged to an accuracy beyond our FN-DMC results.
+
+Ground state energies are calculated for first row atoms and ions and hydrides with and without the adiabatic assumption, see Table \ref{tab:ionization} and \ref{tab:atomization}. For the small systems, Li, Be, B, Be$^+$, B$^+$, C$^+$ and LiH the ECG/Hylleraas results are converged to several digits beyond what can be done with normal quantum chemistry techniques. Thus these results are likely much more accurate than experimental results, and are converged to an accuracy beyond our FN-DMC results.
 
 As an illustration of the high quality QMC techniques used in this work, we compare our atomic results with a recent QMC benchmark study~\cite{Seth_Bench}. The clamped nuclei ground state FN-DMC energies consistently agree across all systems (except for O$^{+}$), within error bars. This is an interesting coincidence since we used a different approach in optimizing our wave functions. In particular our large multi-determinant expansions, can be compared with the approach used by Seth {\it et al.}~\cite{Seth_Bench} which used moderately-sized multi-determinant expansions ($\sim$ 100 CSF) with a backflow transformation.   
  
-For the atomic systems, there are three ECG calculations of non-adiabatic ground state energies we can use as benchmark. The non-adiabatic ground-state energies for Be, $\text{Be}^+$, B,$\text{B}^+$ and $\text{C}^+$ are in agreement with ECG results (-14.66643544~Ha~\cite{Bubin_BeH_noBO},-14.32386349~Ha~\cite{Bubin_BeH_noBO},-24.65262387(250)~Ha~\cite{Bubin_B},-24.347641289(35)~Ha~\cite{Bubin_B+},-37.42916955(250)~Ha~\cite{Bubin_C+}) within 0.2 mHa as shown in Figure \ref{fig:ECG-atoms}.
-
-We performed a study over diatomic systems, the results of which are presented in Table \ref{tab:atomization}. For these diatomic systems, there are high quality thermochemistry benchmark results for which we can compare ~\cite{Feller_Corrections}. 
+For the atomic systems, there are five ECG calculations of non-adiabatic ground state energies we can use as benchmark. The non-adiabatic ground-state energies for Be, $\text{Be}^+$, B,$\text{B}^+$ and $\text{C}^+$ are in agreement with ECG results within 0.2 mHa as shown in Figure \ref{fig:atom-ECG} and Table \ref{tab:ionization}. We performed a study over diatomic systems, the results of which are presented in Table \ref{tab:atomization}. For these diatomic systems, there are high quality thermochemistry benchmark results for which we can compare ~\cite{Feller_Corrections}. 
 
 To make the comparison against the thermochemistry benchmark results, we take the reference energies from the last column of Table VI of Ref.~\cite{Feller_Corrections} and subtracted the corrections in the $\Delta E_{SR}$ and SO columns for comparison with our non-adiabatic energies.  For the comparison with our adiabatic energies we subtracted the DBOC and ZPE corrections.  Corrections from spin-orbit coupling and relativistic effects are not used, as they are not included in our Hamiltonian.
 
-\begin{figure}
-\includegraphics[scale=.4]{Figures/atom-nad-ad}
-\caption{Non-adiabatic contribution to ground state energies of atoms and ions. Non-adiabatic contribution shows very little dependence with the ionized state.}
+\begin{figure}[h]
+\centering
+\includegraphics[scale=.4]{Figures/dia-ECG}
+\caption{Ground state energies of LiH, BeH and BH calculated with non-adiabatic FN-DMC relative to ECG results.~\cite{Adamowicz_LiH,Koput_BeH,Miliordos_BH}.}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[h]
 \includegraphics[scale=.4]{Figures/hydride-ZPE}
 \caption{Non-adiabatic contribution to ground state energies in hydrides. The adiabatic reference energies are calculated by adding zero-point contributions from \cite{Feller_Corrections} to our clamped-nuclei results.}
 \end{figure}
 
 \subsection{Ionization Energies}
 
-\begin{figure}[h]
+The ionization energies are listed in Table \ref{tab:ionization}.  Notice that even though ground state energies change significantly with the inclusion of non-adiabatic effects, the ionization energies are relatively independent of nuclear motion. This suggests that for atomic systems, coupling between valence electron and ion motions is small. The difference in ground state energies can be entirely attributed to the zero point motion of the nuclei. Physically, this means that for all first row atoms, the outer most electron is screened from the nucleus and all of the energy required for its removal can be attributed to its interaction with the rest of the electrons in the atom.
+
+For the LiH molecule we are also interested in calculating the electron affinity for comparison to ECG results. We calculated the ground state energy of LiH$^-$ to be $-8.08220(2)$~Ha for the case of clamped nuclei.  With non-adiabatic effects included our result is  $-8.07811(3)$~Ha. Our non-adiabatic result is in good agreement with a previous ECG study \cite{Bubin_LiH_noBO} which reported a value of $-8.07856887$~Ha. We report an electron affinity of $0.01191(4)$~Ha which is can be compared to the ECG prediction of $0.012132(2)$~Ha and agrees with experiment, $0.0126(4)$~Ha. \footnote{We note that LiH ground state energies which we compare against are mislabeled in Ref.\cite{Bubin_LiH_noBO}, with $\text{LiH}^-$ and LiD being switched.}
+
+\begin{figure}
 \centering
 \includegraphics[scale=.4]{Figures/ionization}
 \caption{Calculated ionization energies relative to experimental data. The calculated energies are all within 1 mHa of experiment.}
 \end{figure}
 
-The ionization energies are listed in Table \ref{tab:ionization}.  Notice that even though ground state energies change significantly with the inclusion of non-adiabatic effects, the ionization energies are relatively independent of nuclear motion. This suggests that for atomic systems, coupling between valence electron and ion motions is small. The difference in ground state energies can be entirely attributed to the zero point motion of the nuclei. Physically, this means that for all first row atoms, the outer most electron is screened from the nucleus and all of the energy required for its removal can be attributed to its interaction with the rest of the electrons in the atom.
-
-For the LiH molecule we are also interested in calculating the electron affinity for comparison to ECG results. We calculated the ground state energy of LiH$^-$ to be $-8.08220(2)$~Ha for the case of clamped nuclei.  With non-adiabatic effects included our result is  $-8.07811(3)$~Ha. Our non-adiabatic result is in good agreement with a previous ECG study \cite{Bubin_LiH_noBO} which reported a value of $-8.07856887$~Ha. We report an electron affinity of $0.01191(4)$~Ha which is can be compared to the ECG prediction of $0.012132(2)$~Ha and agrees with experiment, $0.0126(4)$~Ha. \footnote{We note that LiH ground state energies which we compare against are mislabeled in Ref.\cite{Bubin_LiH_noBO}, with $\text{LiH}^-$ and LiD being switched.}
-
 \input{Table/diatomics}
 
 \subsection{Atomization Energies}
-
-\begin{figure}
-\centering
-\includegraphics[scale=.4]{Figures/dia-ECG}
-\caption{Ground state energies of LiH, BeH and BH calculated with non-adiabatic FN-DMC relative to ECG results.~\cite{Adamowicz_LiH,Koput_BeH,Miliordos_BH}.}
-\end{figure}
 
 \begin{figure}
 \centering
