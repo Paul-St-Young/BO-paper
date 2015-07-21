@@ -15,14 +15,30 @@
 \begin{document}
 
 \title{How Large are Nonadiabatic Effects in Atomic and Diatomic Systems?}
-\input{Section/Authors}
+\author{Yubo Yang}
+\affiliation{Department of Physics, University of Illinois, Urbana, Illinois 61801 USA}
+\author{Ilkka Kyl\"{a}np\"{a}\"{a}}
+\affiliation{Department of Physics, Tampere University of Technology, P.O.~Box 692, FI-33101 Tampere, Finland}
+\affiliation{Department of Physics, University of Illinois, Urbana, Illinois 61801 USA}
+\author{Norm M. Tubman}
+\affiliation{Department of Physics, University of Illinois, Urbana, Illinois 61801 USA}
+\author{Jaron T. Krogel}
+\affiliation{Materials Science \& Technology Division, Oak Ridge National Laboratory, Oak Ridge, TN 37831}
+%\author{Michael V. Pak}
+%\affiliation{Department of Chemistry, University of Illinois, Urbana, Illinois 61801 USA}
+\author{Sharon Hammes-Schiffer}
+\affiliation{Department of Chemistry, University of Illinois, Urbana, Illinois 61801 USA}
+\author{David M. Ceperley}
+\affiliation{Department of Physics, University of Illinois, Urbana, Illinois 61801 USA}
+\date{\today}
+
 \begin{abstract}
 With recent developments in simulating nonadiabatic systems to high accuracy, it has become possible to determine how much energy is attributed to nuclear quantum effects beyond zero-point energy. In this work we calculate the non-relativistic ground-state energies of atomic and molecular systems without the Born-Oppenheimer approximation. For this purpose we utilize the fixed-node diffusion Monte Carlo method, in which the nodes depend on both the electronic and ionic positions. We report ground-state energies for all systems studied, ionization energies for the first-row atoms and atomization energies for the first-row hydrides. We find the ionization energies of the atoms to be nearly independent of the Born-Oppenheimer approximation, within the accuracy of our results. The atomization energies of molecular systems, however, show small effects of the nonadiabatic coupling between electrons and nuclei.
 \end{abstract}
 \maketitle
 
 \section{Introduction}
-There have been several recent discoveries~\cite{Tubman_ECG,cederbaum1,cederbaum12,gross2014,boent,Martinez_Review} suggesting that quantum wave functions, which include both electronic and ionic degrees of freedom, have many interesting properties that have yet to be explored.  This includes the development of equations that exactly factorize a wave function into electronic and ionic components,~\cite{cederbaum1,cederbaum12} the disappearance of conical intersections in wave functions of model systems,~\cite{gross2014} and the use of quantum entanglement to study electronic and ionic density matrices.~\cite{boent} Extending such studies to realistic systems is of broad interest and will considerably expand our understanding of electron-ion systems. However, treatment of \textit{ab initio} electron-ion systems is challenging, and applications have thus been limited. The most accurate simulations of electron-ion wave functions are generally done with very specialized wave functions, which are limited to rather small systems.~\cite{mitroy2013} Methods are also being developed to treat larger systems with different regimes of validity.~\cite{Sharon_NEO-HF,Sharon_XCNEO-HF1,Sharon_XCNEO-HF2,Sharon_XCNEO-HF,Kurt_XCNEO-HF,Kurt_XCNEO-HF1,Sharon_NEO-DFT,Sharon_NEO-DFT2,Sharon_NEO-DFT3,Gross_NEO-DFT,Gross_NEO-DFT1,Ilkka_Path,Ilkka_Path1,Ilkka_Path2}
+There have been several recent discoveries~\cite{Tubman_ECG,cederbaum1,gross2014,boent,Martinez_Review} suggesting that quantum wave functions, which include both electronic and ionic degrees of freedom, have many interesting properties that have yet to be explored.  This includes the development of equations that exactly factorize a wave function into electronic and ionic components,~\cite{cederbaum1,cederbaum12} the disappearance of conical intersections in wave functions of model systems,~\cite{gross2014} and the use of quantum entanglement to study electronic and ionic density matrices.~\cite{boent} Extending such studies to realistic systems is of broad interest and will considerably expand our understanding of electron-ion systems. However, treatment of \textit{ab initio} electron-ion systems is challenging, and applications have thus been limited. The most accurate simulations of electron-ion wave functions are generally done with very specialized wave functions, which are limited to rather small systems.~\cite{mitroy2013} Methods are also being developed to treat larger systems with different regimes of validity.~\cite{Sharon_NEO-HF,Sharon_XCNEO-HF1,Sharon_XCNEO-HF2,Sharon_XCNEO-HF,Kurt_XCNEO-HF,Kurt_XCNEO-HF1,Sharon_NEO-DFT,Sharon_NEO-DFT2,Sharon_NEO-DFT3,Gross_NEO-DFT,Gross_NEO-DFT1,Ilkka_Path,Ilkka_Path1,Ilkka_Path2}
 
 As a framework to address these problems in general realistic systems, we recently demonstrated that quantum Monte Carlo (QMC) can be combined with quantum chemistry techniques to generate electron-ion wave functions.~\cite{Tubman_ECG} We treated realistic molecular systems and demonstrated that our method can be scaled to larger systems than previously considered while maintaining a highly accurate wave function. In the following we extend our previous work by considering the simulation of a larger set of atoms and molecules.  We calculate ionization energies and atomization energies that can be directly compared with previous results for benchmarking purposes.
 
@@ -52,8 +68,8 @@ We optimize the CSF and Jastrow coefficients, $\vec{\alpha}$ and $\vec{\beta}$, 
 %\input{Table/cas}
 
 \begin{figure}[h]
-\includegraphics[width=9cm]{Figures/fig1a}
-\includegraphics[width=9cm]{Figures/fig1b}
+\includegraphics[width=9cm]{fig1a}
+\includegraphics[width=9cm]{fig1b}
 \caption{Dragged-node approach for simulation of atomic and molecular systems in QMC. {\bf (a)} For atomic systems we can consider the entire wave function shifting with the ion. This process can be visualized by following a contour of the wave function. The thick dashed circle represents a contour of the electronic wave function when the proton is at its reference position $\vec{R}_o$, and the thin dashed circle represents the same contour when the proton has moved to a new position $\vec{R}$. To evaluate the ion-dependent electronic wave function $\bar{\psi}_e(\vec{r},\vec{R})$, we simply map the electron to its proper place in the reference wave function $\psi_e(\vec{r};\vec{R}_o)$. That is, $\bar{\psi}_e(\vec{r},\vec{R})=\bar{\psi}_e(\vec{r}+\vec{s},\vec{R}_o)=\psi_e(\vec{r}+\vec{s};\vec{R}_o)$ where $\vec{s}$ is the shift required to put the proton back to its reference position. {\bf (b)} For H$_2^+$, we pick one of the protons as an ``anchor'' and approximate the new wave function by dragging the reference wave function with the ``anchor'' proton. We also rotate the wave function to align its axis of symmetry with the orientation of the two protons. \label{fig:drag}}
 \end{figure}
 
@@ -77,7 +93,121 @@ where $a_{ij}$ is a coefficient that is optimized and $b_{ij}$ are taken to be t
 Using definitions from Ref.~\cite{Cederbaum_Review}, the adiabatic approximation will refer to the complete neglect of the nonadiabatic coupling matrix when the Schr$\ddot{\text{o}}$dinger equation is expressed in the basis of eigenstates of the electronic Hamiltonian. In this context, the nonadiabatic contribution to an eigenvalue of the electronic Hamiltonian can be partitioned into two parts: the diagonal Born-Oppenheimer correction (DBOC), which only involves the single electronic state of interest, and the remaining corrections arising from terms that involve excited eigenstates of the electronic Hamiltonian. The DBOC discussed in this work is the expectation value of the nuclear kinetic energy operator for the ground adiabatic electronic state. We define the clamped-nuclei ground-state energy $E_c$ as the lowest eigenvalue of the electronic Hamiltonian and the nonadiabatic ground-state energy $E_n$ as the lowest eigenvalue of the full molecular Hamiltonian that includes the nuclear kinetic energy. The zero-point energy (ZPE) for a diatomic molecule is the energy of the ground vibrational state of the one-dimensional vibrational mode. Note that the ZPE of the nuclei is part of the difference $E_n-E_c$. The ZPE is not considered to be nonadiabatic, but its contribution is included in the full molecular Hamiltonian.
 
 \section{Results and Discussion}
-\input{Table/atoms}
+\begin{table*}[t!]
+\setlength{\extrarowheight}{1pt}
+\begin{threeparttable}
+
+\caption{Ground-state energies for atoms and ions and the ionization energies for the atoms:  fixed-node DMC results of this work (FN-DMC) for atoms and ions with and without the Born-Oppenheimer approximation. The rows marked with bold \textbf{FN-DMC} are our non-adiabatic results. The ionization potentials (IPs) are reported in the last section of the table. Energies are given in units of Hartree. For the highly accurate Hylleraas and ECG results, up to 8 digits are reported in the table. \label{tab:ionization}}
+\begin{tabular}
+% siunitx setup
+{
+ l
+ S[table-format=1.6]
+ S[table-format=5.6]
+ S[table-format=5.6]
+ S[table-format=4.6]
+ S[table-format=4.6]
+ S[table-format=4.6]
+ S[table-format=4.6]
+ S[table-format=4.6]
+}
+
+\hline\hline
+\multicolumn{1}{c}{Atom} & 
+\multicolumn{1}{c}{Li$(^2$S)} &
+\multicolumn{1}{c}{Be$(^1$S)} &
+\multicolumn{1}{c}{B$(^2$P)} &
+\multicolumn{1}{c}{C$(^3$P)} &
+\multicolumn{1}{c}{N$(^4$S)} &
+\multicolumn{1}{c}{O$(^3$P)} &
+\multicolumn{1}{c}{F$(^2$P)} \\ 
+\hline
+\multicolumn{1}{c}{} & 
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{clamped-ion} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} \\
+FN-DMC & \text{-}7.478057(5) & \text{-}14.66731(1) & \text{-}24.65374(2) & \text{-}37.84448(2) & \text{-}54.58851(6) & \text{-}75.0658(2) & \text{-}99.73177(6) \\
+Seth DMC \cite{Seth_Bench} & \text{-}7.478067(5) & \text{-}14.667306(7) & \text{-}24.65379(3) & \text{-}37.84446(6) & \text{-}54.58867(8) & \text{-}75.0654(1) & \text{-}99.7318(1) \\
+$E_{\text{ref}}$\tnote{a} &  \text{-}7.4780603 & \text{-}14.667356 & \text{-}24.653866 & \text{-}37.8450 & \text{-}54.5892 & \text{-}75.0673 & \text{-}99.7339 \\
+\multicolumn{1}{c}{} & 
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{non-adiabatic} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} \\
+\textbf{FN-DMC} & \text{-}7.47742(2) & \text{-}14.66643(3) & \text{-}24.65239(4) & \text{-}37.84273(4) & \text{-}54.58641(5) & \text{-}75.06313(6) & \text{-}99.7293(1) \\
+ECG \tnote{b} & \text{-}7.4774519 & \text{-}14.666435 & \text{-}24.652624 & \text{-}37.841621 & N/A & N/A & N/A \\
+\hline
+
+\multicolumn{1}{c}{Ion} & 
+\multicolumn{1}{c}{$\text{Li}^+(^1$S)} &
+\multicolumn{1}{c}{$\text{Be}^+(^2$S)} &
+\multicolumn{1}{c}{$\text{B}^+(^1$S)} &
+\multicolumn{1}{c}{$\text{C}^+(^2$P)} &
+\multicolumn{1}{c}{$\text{N}^+(^4$S)} &
+\multicolumn{1}{c}{$\text{O}^+(^3$P)} &
+\multicolumn{1}{c}{$\text{F}^+(^2$P)} \\ 
+\hline
+\multicolumn{1}{c}{} & 
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{clamped-ion} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} \\
+FN-DMC & \text{-}7.27988(1) & \text{-}14.324749(7) & \text{-}24.34883(1) & \text{-}37.43071(2) & \text{-}54.05371(5) & \text{-}74.56597(6) & \text{-}99.0909(1) \\
+Seth DMC \cite{Seth_Bench} & \text{-}7.279914(3) & \text{-}14.324761(3) & \text{-}24.34887(2) & \text{-}37.43073(4) & \text{-}54.05383(7) & \text{-}74.56662(7) & \text{-}99.0911(2) \\
+$E_{\text{ref}}$\tnote{c} & \text{-}7.2799134 & \text{-}14.324763 & \text{-}24.348884 & \text{-}37.430880 & \text{-}54.0546 & \text{-}74.5668 & \text{-}99.0928 \\ 
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{non-adiabatic} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} \\
+\textbf{FN-DMC} & \text{-}7.27931(4) & \text{-}14.32387(2) & \text{-}24.34750(4) & \text{-}37.42899(6) & \text{-}54.05165(4) & \text{-}74.5634(1) & \text{-}99.0885(1) \\
+ECG \tnote{d} & N/A &  \text{-}14.323863 &  \text{-}24.347641 &  \text{-}37.429169 & N/A & N/A & N/A \\
+\hline
+\multicolumn{1}{c}{} & 
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{clamped-ion} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} \\
+IP (FN-DMC) & 0.19817(2) & 0.34256(1) & 0.30490(2) & 0.41377(3) & 0.53479(8) & 0.4998(2) & 0.6407(1) \\
+\multicolumn{1}{c}{} & 
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{non-adiabatic} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} \\
+IP (\textbf{FN-DMC}) & 0.19811(4) & 0.34257(4) & 0.30490(5) & 0.41374(7) & 0.53476(7) & 0.4998(1) & 0.6408(1) \\
+IP (Ref.)\tnote{e} & 0.198130 & 0.342572 & 0.304980 & 0.414014 & 0.534775 & 0.500452 & 0.640946 \\
+\hline\hline
+\end{tabular}
+
+\begin{tablenotes}
+\item[a] For the atomic references, we use the Hylleraas result for Li,~\cite{Wang_Li} and ECG results for Be~\cite{Stanke_Be} and B.~\cite{Bubin_B} Ref.~\cite{Davidson_Atoms} is used for C,N,O and F where the ground-state energies are taken from Table XI.
+\item[b] We use non-adiabatic ECG results as the reference for Li,~\cite{Stanke_Li} Be~\cite{Bubin_BeH_noBO} and B~\cite{Bubin_B}, which are converged to the true ground-state to well within 0.1 mHa. The result for C,~\cite{Bubin_C} however, may have error on the order of 1 mHa.
+\item[c] For the ionic references, we use the ICI result for $\text{Li}^+$,~\cite{Nakashima_Li+} Hylleraas result for $\text{Be}^+$~\cite{Puchalski_Be+} and ECG results for $\text{B}^+$~\cite{Bubin_B+} and $\text{C}^+$.~\cite{Bubin_C+,mitroy2013} Ref.~\cite{Davidson_Atoms} is used for $\text{N}^+$,$\text{O}^+$,$\text{F}^+$.
+\item[d] ECG references only exist for $\text{Be}^+$,~\cite{Bubin_BeH_noBO} $\text{B}^+$~\cite{Bubin_B+} and $\text{C}^+$.~\cite{Bubin_C+}
+\item[e] Spin-orbit coupling and relativistic corrections~\cite{Klopper_IP} are removed from experimental data~\cite{NIST_Atoms} for comparison.
+\end{tablenotes}
+
+\end{threeparttable}
+\end{table*}
 
 \subsection{Atoms and Ions}
 
@@ -88,7 +218,7 @@ The systems with the most error are O and F, for which other QMC studies seem to
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=.37]{Figures/atom-ECG}
+\includegraphics[scale=.37]{atom-ECG}
 \caption{FN-DMC ground state energies for $\text{Be}^+$, Be, $\text{B}^+$, B, $\text{C}^+$ relative to ECG references~\cite{Stanke_Be,Puchalski_Be+,Bubin_BeH_noBO,Bubin_B,Bubin_B+,Bubin_C+} for either clamped-ion or nonadiabatic calculations. These relative energies provide an estimate for the fixed-node error in the electronic and electron-ion wave functions, respectively.\label{fig:atom-ECG}}
 \end{figure}
 
@@ -96,7 +226,7 @@ It is more difficult to find accurate references for the nonadiabatic results. W
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=.4]{Figures/ionization}
+\includegraphics[scale=.4]{ionization}
 \caption{Calculated ionization energies relative to reference data. The same reference is used for both clamped-ion and nonadiabatic results. The calculated energies are all within 1 mHa of the reference. \label{fig:ionization}}
 \end{figure}
 
@@ -105,12 +235,12 @@ The ionization potentials are reported in Table \ref{tab:ionization} and shown i
 For the atoms considered in this work, ionization energies have previously been predicted to be independent of all nonadiabatic effects beyond the DBOC to within an accuracy of 0.1 mHa.~\cite{Klopper_IP} This prediction is based on calculations that are reported to be exact and agree to high accuracy with experiment. As shown in Figure \ref{fig:ionization}, the ionization potentials calculated with and without the Born-Oppenheimer approximation are all within 1 mHa of the reference energies. Further, the clamped-ion and nonadiabatic predictions for the ionization potentials are statistically indistinguishable for all systems studied, consistent with the previous study.~\cite{Klopper_IP}
 
 \begin{figure}[h]
-\includegraphics[scale=.37]{Figures/atom-nad-ad}
+\includegraphics[scale=.37]{atom-nad-ad}
 \caption{The nonadiabatic contribution to ground-state energies of atoms and ions calculated with FN-DMC. The nonadiabatic contribution is partitioned into the DBOC and the remaining correction. A hatched bar indicates the contribution is negative. \label{fig:atom-nad-ad}} %nonadiabatic contribution shows very little dependence with the ionized state.
 \end{figure}
 
 \begin{figure}[h]
-\includegraphics[scale=.4]{Figures/analytical}
+\includegraphics[scale=.4]{analytical}
 \caption{The nonadiabatic contribution to ground-state energies of ions and their corresponding hydrogen-like atoms calculated with FN-DMC and analytically as shown in Eq. \ref{eq:analytical}. \label{fig:analytical}}
 \end{figure}
 
@@ -124,13 +254,87 @@ where $\mu=\frac{M}{M+1}$ is the reduced mass of the hydrogen-like atom and $M$ 
 
 \subsection{Hydrides}
 
-\input{Table/diatomics}
+\begin{table*}[t!]
+\setlength{\extrarowheight}{1pt}
+\begin{threeparttable}
+\caption{Ground-state energies and atomization energies: fixed-node DMC results of this work for all first row hydrides with and without the Born-Oppenheimer approximation. The rows marked with bold \textbf{FN-DMC} are our non-adiabatic results. All atomization energies are estimated for 0K. $D_o$ includes zero-point energy contribution, while $D_e$ does not. Energies are given in units of Hartree. \label{tab:atomization}}
+\begin{tabular}
+% siunitx setup
+{
+ l
+ S[table-format=1.6]
+ S[table-format=4.6]
+ S[table-format=4.6]
+ S[table-format=4.6]
+ S[table-format=4.6]
+ S[table-format=4.6]
+ S[table-format=4.6]
+}
+
+\hline\hline
+\multicolumn{1}{c}{Molecule} & 
+\multicolumn{1}{c}{LiH$(^1\Sigma^+)$} &
+\multicolumn{1}{c}{BeH$(^2\Sigma^+)$} &
+\multicolumn{1}{c}{BH$(^1\Sigma^+)$} &
+\multicolumn{1}{c}{CH$(^2\Pi)$} &
+\multicolumn{1}{c}{OH$(^2\Pi)$} &
+\multicolumn{1}{c}{HF$(^1\Sigma^+)$} \\ 
+\hline
+\multicolumn{1}{c}{} & 
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{clamped-nuclei} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} \\
+FN-DMC & \text{-}8.070518(7) & \text{-}15.24793(2) & \text{-}25.28867(3) & \text{-}38.4780(1) & \text{-}75.7357(1) & \text{-}100.4552(1) \\
+$E_{\text{ref}}$ \tnote{a} & \text{-}8.0705473 & \text{-}15.2483(4) & \text{-}25.2893(2) & \text{-}38.4792(2) & \text{-}75.7382(2) & \text{-}100.4600(3) \\
+\multicolumn{1}{c}{} & 
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{non-adiabatic} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} \\
+\textbf{FN-DMC} & \text{-}8.06624(3) & \text{-}15.24194(5) & \text{-}25.28102(7) & \text{-}38.4672(3) & \text{-}75.7245(5) & \text{-}100.4431(4) \\
+ECG \cite{Bubin_LiH_noBO,Bubin_BeH_noBO,Bubin_BH_noBO} & \text{-}8.0664371(15) & \text{-}15.24203(10) & \text{-}25.2803(10) & N/A & N/A & N/A \\
+\hline
+
+\multicolumn{1}{c}{} & 
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{clamped-nuclei} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} \\
+$D_e$ (FN-DMC) & 0.09246(1) & 0.08062(2) & 0.13493(3) & 0.1335(1) & 0.1699(2) & 0.2234(1) \\
+$D_e$ Feller \tnote{b} & 0.09262(5) & 0.0809(4) & 0.1354(2) & 0.1342(2) & 0.1709(2) & 0.2258(3) \\
+\multicolumn{1}{c}{} & 
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{non-adiabatic} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} &
+\multicolumn{1}{c}{} \\
+$D_o$ (\textbf{FN-DMC}) & 0.08908(4)  & 0.07578(4)  & 0.12890(4) & 0.12480(9) & 0.1617(1) & 0.2141(1) \\
+$D_o$ Feller \tnote{c} & 0.08940(5) & 0.0761(4) & 0.1299(2) & 0.1276(2) & 0.1622(2) & 0.2166(3)\\
+$D_o$ Exp. \cite{CCCBDB,HH} & 0.08874(38) & 0.07475(4) & 0.1281(37)\tnote{d} & 0.1275(5) & 0.1622(1) & 0.2158(3) \\
+\hline\hline
+\end{tabular}
+\begin{tablenotes}
+\item[a] For LiH, ECG provides the best reference energy.~\cite{Adamowicz_LiH} For the rest of the systems, we combined the best clamped-ion atomic references in Table \ref{tab:ionization} and thermochemistry estimates of $D_e$ in this table to produce the reference ground-state energies.
+\item[b] Estimates for $D_e$ are calculated by subtracting the scalar relativistic, spin-orbit coupling and zero-point energy corrections from the reference $D_o$ in Table VI of Ref.~\cite{Feller_Corrections}.
+\item[c] Here only the scalar relativistic and spin-orbit coupling corrections are subtracted.
+\item[d] The atomization energy for BeH in Ref.~\cite{CCCBDB} disagrees with previous high-level theoretical benchmarks,~\cite{Feller_Corrections,Bubin_BeH_noBO} thus we use Ref.~\cite{HH} instead.
+\end{tablenotes}
+\end{threeparttable}
+\end{table*}
 In Table \ref{tab:atomization}, we present our results on a series of molecular systems (hydrides). Finding accurate reference data for these systems to 0.1 mHa is not straightforward, and we use highly converged ECG data when available. Two ECG calculations have been performed in the clamped-nuclei limit for LiH~\cite{Cencek_LiH,Adamowicz_LiH} and we agree within 0.03 mHa with the more recent reference. For the rest of the systems, we combined the best clamped-ion atomic references in Table \ref{tab:ionization} and thermochemistry~\cite{Feller_Corrections} estimates of atomization energy $D_e$ in Table \ref{tab:atomization} to produce the reference ground-state energies. For BeH and BH, we are within 1 mHa of the reference values, and our energies are lower than the best available quantum chemistry results of -15.247846 Ha~\cite{Koput_BeH} and -25.287650 Ha~\cite{Miliordos_BH} for BeH and BH, respectively. 
 %For the rest of the systems it is possible we have the lowest variational estimates. %, but a comparison with reference suggests that we have fixed-node error in the range of a few mHa.
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=.37]{Figures/dia-ECG}
+\includegraphics[scale=.37]{dia-ECG}
 \caption{The nonadiabatic FN-DMC ground-state energies of LiH, BeH and BH relative to ECG references. The error bars for the nonadiabatic ECG references are shown as thick dark lines, and the error bars for the FN-DMC calculations are comparable to the size of the symbols. \label{fig:dia-ECG}}
 \end{figure}
 
@@ -140,14 +344,14 @@ The atomization energies of the diatomic systems are reported in Table \ref{tab:
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=.4]{Figures/atomization}
+\includegraphics[scale=.4]{atomization}
 \caption{Atomization energies of first row hydrides obtained with FN-DMC relative to experimental data. The adiabatic results are estimated by adding zero-point energies from Ref.~\cite{Feller_Corrections} to the clamped-nuclei results. \label{fig:atomization}}
 \end{figure}
 
 In Figure \ref{fig:atomization}, we compare both our clamped-nuclei and our nonadiabatic results to experimental data. We also provide adiabatic estimates by adding the zero-point energies calculated with coupled-cluster techniques in Ref.~\cite{Feller_Corrections} to our clamped-nuclei results. To calculate experimental atomization energies starting from the clamped-nuclei results, energetic corrections due to zero-point motion of the nuclei, nonadiabatic effects, spin-orbit coupling and relativistic effects should be included. For these highly adiabatic systems, the inclusion of zero-point motion alone is sufficient to bring our clamped-nuclei results to within 2 mHa of the experimental results. Except for the case of CH, the nonadiabatic results agree closely with their adiabatic counterparts and are closer to the experimental values, although for BH the experimental error bar is too large to provide a high-accuracy comparison. For CH, the experimental result suggests that our electron-ion wave function for this molecule has an unusually large fixed-node error.
 
 \begin{figure}[h]
-\includegraphics[scale=.37]{Figures/dia-nad-ad}
+\includegraphics[scale=.37]{dia-nad-ad}
 \caption{The nonadiabatic contribution to the ground-state energies in hydrides calculated with FN-DMC. The adiabatic reference energies are calculated by adding zero-point energy contributions from Ref.~\cite{Feller_Corrections} to our clamped-nuclei results. The nonadiabatic contribution is partitioned into the DBOC and the remaining correction. A hatched bar indicates the contribution is negative. \label{fig:dia-nad-ad}}
 \end{figure}
 
@@ -162,7 +366,7 @@ We found the ionization energies of the atoms to be independent of the Born-Oppe
 In comparing to accurate benchmark results obtained with other methods, we have demonstrated the validity of our wave function ansatz, namely it does produce a high-quality electron-ion wave function. This technique also has the potential to solve interesting larger-scale problems due to its ease of implementation, as well as the polynomial scaling in computational time with respect to the number of electrons.
 
 \section{Acknowledgment}
-\input{Section/acknowledgment}
+The authors would like to thank Mike Pak, Kurt Brorsen, Katharina Doblhoff-Dier and Brian Busemeyer for useful discussions. The authors would also like to thank Prof. Wim Klopper for providing the DBOC references for the atoms and ions and Prof. David Feller for providing the DBOC data for the hydrides. This work was supported by the U.S. Department of Energy (DOE) Grant No. DE-FG02-12ER46875 as part of the Scientific Discovery through Advanced Computing (SciDAC) program. NT and DC were supported by DOE DE-NA0001789. S.H.-S. acknowledges support by the National Science Foundation under CHE-13-61293. J.T.K. was supported through Predictive Theory and Modeling for Materials and Chemical Science program by the Office of Basic Energy Sciences (BES), Department of Energy. We used the Extreme Science and Engineering Discovery Environment (XSEDE), which is supported by the National Science Foundation Grant No. OCI-1053575 and resources of the Oak Ridge Leadership Computing Facility (OLCF) at the Oak Ridge National Laboratory, which is supported by the Office of Science of the U.S. Department of Energy under Contract No. DE-AC05-00OR22725.
 
 \bibliography{ref}
 \end{document}
