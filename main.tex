@@ -5,6 +5,12 @@
 \usepackage{siunitx} % for decimal alignment in tables
 \usepackage{bm,amssymb,amsmath} % for math
 \usepackage[bookmarks]{hyperref} % for reference links
+\usepackage[svgnames]{xcolor} % to define color names
+\definecolor{Blue}{RGB}{0 0 128}
+\hypersetup{ %options-for-appearance-of-links-in-hyperref
+	colorlinks= true,
+    allcolors = Blue
+}
 
 \begin{document}
 
@@ -12,9 +18,6 @@
 \input{Section/Authors}
 \begin{abstract}
 With recent developments in simulating nonadiabatic systems to high accuracy, it has become possible to determine how much energy is attributed to nuclear quantum effects beyond zero-point energy. In this work we calculate the non-relativistic ground-state energies of atomic and molecular systems without the Born-Oppenheimer approximation. For this purpose we utilize the fixed-node diffusion Monte Carlo method, in which the nodes depend on both the electronic and ionic positions. We report ground-state energies for all systems studied, ionization energies for the first-row atoms and atomization energies for the first-row hydrides. We find the ionization energies of the atoms to be nearly independent of the Born-Oppenheimer approximation, within the accuracy of our results. The atomization energies of molecular systems, however, show small effects of the nonadiabatic coupling between electrons and nuclei.
-%We demonstrate that the fixed-node approximation provides 
-%a highly accurate and scalable approach to treating molecular systems beyond
-% the Born-Oppenheimer approximation.
 \end{abstract}
 \maketitle
 
