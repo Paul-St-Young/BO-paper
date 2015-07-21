@@ -1,12 +1,10 @@
-\documentclass[superscriptaddress,groupedaddress,twocolumn]{revtex4-1}
-%\documentclass[aip,reprint]{revtex4-1} % jcp,numerical are the defaults
+% delete the .aux file if "!Package babel Error: You haven't defined the language ENGLISH yet."
+\documentclass[aip,jcp,numerical,reprint]{revtex4-1}
 \usepackage{graphicx}  % needed for figures
-\usepackage{dcolumn}   % LaTeX2e compatible
 \usepackage{threeparttable} % for annotated table
 \usepackage{siunitx} % for decimal alignment in tables
 \usepackage{bm,amssymb,amsmath} % for math
 \usepackage[bookmarks]{hyperref} % for reference links
-%\usepackage[english]{babel}
 
 \begin{document}
 
@@ -51,8 +49,8 @@ We optimize the CSF and Jastrow coefficients, $\vec{\alpha}$ and $\vec{\beta}$, 
 %\input{Table/cas}
 
 \begin{figure}[h]
-\includegraphics[width=9cm]{fig1a.pdf}
-\includegraphics[width=9cm]{fig1b.pdf}
+\includegraphics[width=9cm]{Figures/fig1a}
+\includegraphics[width=9cm]{Figures/fig1b}
 \caption{Dragged-node approach for simulation of atomic and molecular systems in QMC. {\bf (a)} For atomic systems we can consider the entire wave function shifting with the ion. This process can be visualized by following a contour of the wave function. The thick dashed circle represents a contour of the electronic wave function when the proton is at its reference position $\vec{R}_o$, and the thin dashed circle represents the same contour when the proton has moved to a new position $\vec{R}$. To evaluate the ion-dependent electronic wave function $\bar{\psi}_e(\vec{r},\vec{R})$, we simply map the electron to its proper place in the reference wave function $\psi_e(\vec{r};\vec{R}_o)$. That is, $\bar{\psi}_e(\vec{r},\vec{R})=\bar{\psi}_e(\vec{r}+\vec{s},\vec{R}_o)=\psi_e(\vec{r}+\vec{s};\vec{R}_o)$ where $\vec{s}$ is the shift required to put the proton back to its reference position. {\bf (b)} For H$_2^+$, we pick one of the protons as an ``anchor'' and approximate the new wave function by dragging the reference wave function with the ``anchor'' proton. We also rotate the wave function to align its axis of symmetry with the orientation of the two protons. \label{fig:drag}}
 \end{figure}
 
