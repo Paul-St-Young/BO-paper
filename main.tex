@@ -11,6 +11,9 @@
 	colorlinks= true,
     allcolors = Blue
 }
+\usepackage{tikz}
+\usetikzlibrary{calc} % for tikz calculations
+\usetikzlibrary{arrows,decorations.markings} % make arrow head bigger
 
 \begin{document}
 
@@ -218,7 +221,7 @@ The systems with the most error are O and F, for which other QMC studies seem to
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=.37]{atom-ECG}
+\includegraphics[scale=.4]{atom-ECG}
 \caption{FN-DMC ground state energies for $\text{Be}^+$, Be, $\text{B}^+$, B, $\text{C}^+$ relative to ECG references~\cite{Stanke_Be,Puchalski_Be+,Bubin_BeH_noBO,Bubin_B,Bubin_B+,Bubin_C+} for either clamped-ion or nonadiabatic calculations. These relative energies provide an estimate for the fixed-node error in the electronic and electron-ion wave functions, respectively.\label{fig:atom-ECG}}
 \end{figure}
 
@@ -226,7 +229,7 @@ It is more difficult to find accurate references for the nonadiabatic results. W
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=.4]{ionization}
+\includegraphics[scale=.37]{ionization}
 \caption{Calculated ionization energies relative to reference data. The same reference is used for both clamped-ion and nonadiabatic results. The calculated energies are all within 1 mHa of the reference. \label{fig:ionization}}
 \end{figure}
 
@@ -235,7 +238,7 @@ The ionization potentials are reported in Table \ref{tab:ionization} and shown i
 For the atoms considered in this work, ionization energies have previously been predicted to be independent of all nonadiabatic effects beyond the DBOC to within an accuracy of 0.1 mHa.~\cite{Klopper_IP} This prediction is based on calculations that are reported to be exact and agree to high accuracy with experiment. As shown in Figure \ref{fig:ionization}, the ionization potentials calculated with and without the Born-Oppenheimer approximation are all within 1 mHa of the reference energies. Further, the clamped-ion and nonadiabatic predictions for the ionization potentials are statistically indistinguishable for all systems studied, consistent with the previous study.~\cite{Klopper_IP}
 
 \begin{figure}[h]
-\includegraphics[scale=.37]{atom-nad-ad}
+\includegraphics[scale=.4]{atom-nad-ad}
 \caption{The nonadiabatic contribution to ground-state energies of atoms and ions calculated with FN-DMC. The nonadiabatic contribution is partitioned into the DBOC and the remaining correction. A hatched bar indicates the contribution is negative. \label{fig:atom-nad-ad}} %nonadiabatic contribution shows very little dependence with the ionized state.
 \end{figure}
 
@@ -244,7 +247,7 @@ For the atoms considered in this work, ionization energies have previously been 
 \caption{The nonadiabatic contribution to ground-state energies of ions and their corresponding hydrogen-like atoms calculated with FN-DMC and analytically as shown in Eq. \ref{eq:analytical}. \label{fig:analytical}}
 \end{figure}
 
-In Figure \ref{fig:atom-nad-ad}, we demonstrate the amount of nonadiabatic contribution to the ground-state energies in atoms and ions calculated as the difference between the nonadiabatic and clamped-ion ground-state energies. The amount of nonadiabatic contribution is always positive for these systems and mostly increases with atomic number. Using previous benchmark values for the DBOC, we can break down the nonadiabatic contribution of our system into a DBOC contribution and everything beyond the DBOC.~\footnote{The DBOC values for the atoms and ions provided by Prof. Wim Klopper are calculated at the CCSD/d-aug-cc-pwCVQZ level using CFOUR.}~\cite{CFOUR,Harding} Figure \ref{fig:atom-nad-ad} indicates that in the atomic systems, the DBOC is the dominant contribution to the nonadiabatic energy, with the remaining amount being close to zero within error bars. The nonadiabatic energy is relatively constant between the neutral and cationic species. This observation suggests that the amount of nonadiabatic contribution is insensitive to the addition or removal of a valence electron. Physically, the valence electrons are farther from the nucleus than the core electrons, and thus are likely to be affected to a lesser degree by the delocalization of the nucleus. 
+In Figure \ref{fig:atom-nad-ad}, we demonstrate the amount of nonadiabatic contribution to the ground-state energies in atoms and ions calculated as the difference between the nonadiabatic and clamped-ion ground-state energies. The amount of nonadiabatic contribution is always positive for these systems and mostly increases with atomic number. Using previous benchmark values for the DBOC, we can break down the nonadiabatic contribution of our system into a DBOC contribution and everything beyond the DBOC.~\cite{Klopper_DBOC,CFOUR,Harding} Figure \ref{fig:atom-nad-ad} indicates that in the atomic systems, the DBOC is the dominant contribution to the nonadiabatic energy, with the remaining amount being close to zero within error bars. The nonadiabatic energy is relatively constant between the neutral and cationic species. This observation suggests that the amount of nonadiabatic contribution is insensitive to the addition or removal of a valence electron. Physically, the valence electrons are farther from the nucleus than the core electrons, and thus are likely to be affected to a lesser degree by the delocalization of the nucleus. 
 
 The nonadiabatic contributions in the cations can also be compared with those in their corresponding hydrogen-like atoms for a more in-depth analysis. The nonadiabatic contribution in a hydrogen-like atom can be obtained analytically. The result in Hartree atomic units is
 \begin{align}
@@ -351,13 +354,13 @@ The atomization energies of the diatomic systems are reported in Table \ref{tab:
 In Figure \ref{fig:atomization}, we compare both our clamped-nuclei and our nonadiabatic results to experimental data. We also provide adiabatic estimates by adding the zero-point energies calculated with coupled-cluster techniques in Ref.~\cite{Feller_Corrections} to our clamped-nuclei results. To calculate experimental atomization energies starting from the clamped-nuclei results, energetic corrections due to zero-point motion of the nuclei, nonadiabatic effects, spin-orbit coupling and relativistic effects should be included. For these highly adiabatic systems, the inclusion of zero-point motion alone is sufficient to bring our clamped-nuclei results to within 2 mHa of the experimental results. Except for the case of CH, the nonadiabatic results agree closely with their adiabatic counterparts and are closer to the experimental values, although for BH the experimental error bar is too large to provide a high-accuracy comparison. For CH, the experimental result suggests that our electron-ion wave function for this molecule has an unusually large fixed-node error.
 
 \begin{figure}[h]
-\includegraphics[scale=.37]{dia-nad-ad}
+\includegraphics[scale=.4]{dia-nad-ad}
 \caption{The nonadiabatic contribution to the ground-state energies in hydrides calculated with FN-DMC. The adiabatic reference energies are calculated by adding zero-point energy contributions from Ref.~\cite{Feller_Corrections} to our clamped-nuclei results. The nonadiabatic contribution is partitioned into the DBOC and the remaining correction. A hatched bar indicates the contribution is negative. \label{fig:dia-nad-ad}}
 \end{figure}
 
-To estimate the nonadiabatic contribution to the ground-state energies for these hydrides, we calculate the difference between our nonadiabatic and adiabatic results, as shown in Figure \ref{fig:dia-nad-ad}. Similar to the atomic case, we break down the nonadiabatic energy of our system into a DBOC contribution and everything beyond the DBOC.~\cite{CFOUR,Harding}~\footnote{The DBOC references provided by Prof. David Feller are calculated at the CCSD(T)/aug-cc-pVTZ level using CFOUR.} The total amount of nonadiabatic contribution appears to peak for CH, although this larger contribution may reflect the larger fixed-node error for this system. For BeH, OH, and HF, the nonadiabatic contribution is almost entirely accounted for by the DBOC with the remaining correction being zero within error bars. For BH and CH, the remaining amount of nonadiabatic contribution seems to be significant. However, if the electron-ion wave function is significantly lower in quality than the electronic wave function for a given system, then the amount of nonadiabatic contribution will be overestimated. We also use the zero-point energies from Feller et. al.~\cite{Feller_Corrections} as corrections, which may introduce some additional uncertainty.  Regardless, our current predictions suggest that nonadiabatic effects in BH and CH are much larger than in the other systems we considered.
+To estimate the nonadiabatic contribution to the ground-state energies for these hydrides, we calculate the difference between our nonadiabatic and adiabatic results, as shown in Figure \ref{fig:dia-nad-ad}. Similar to the atomic case, we break down the nonadiabatic energy of our system into a DBOC contribution and everything beyond the DBOC.~\cite{CFOUR,Harding,Feller_DBOC} The total amount of nonadiabatic contribution appears to peak for CH, although this larger contribution may reflect the larger fixed-node error for this system. For BeH, OH, and HF, the nonadiabatic contribution is almost entirely accounted for by the DBOC with the remaining correction being zero within error bars. For BH and CH, the remaining amount of nonadiabatic contribution seems to be significant. However, if the electron-ion wave function is significantly lower in quality than the electronic wave function for a given system, then the amount of nonadiabatic contribution will be overestimated. We also use the zero-point energies from Feller et. al.~\cite{Feller_Corrections} as corrections, which may introduce some additional uncertainty.  Regardless, our current predictions suggest that nonadiabatic effects in BH and CH are much larger than in the other systems we considered.
 
-For the LiH molecule, we also calculated the electron affinity for comparison to ECG results. We calculated the ground-state energy of LiH$^-$ to be $-8.08222(2)$~Ha for the case of clamped-nuclei. With nonadiabatic effects included, our result is  $-8.07811(3)$~Ha. Our nonadiabatic result is in good agreement with a previous ECG study,~\cite{Bubin_LiH_noBO} which reported a value of $-8.07856887$~Ha. We report an electron affinity of $0.01187(4)$~Ha, which can be compared to the ECG prediction of $0.012132(2)$~Ha and agrees with the experimental value of $0.0126(4)$ Ha.~\footnote{We note that LiH ground state energies which we compare against are mislabeled in Ref.~\cite{Bubin_LiH_noBO}, with $\text{LiH}^-$ and LiD being switched.}
+For the LiH molecule, we also calculated the electron affinity for comparison to ECG results. We calculated the ground-state energy of LiH$^-$ to be $-8.08222(2)$~Ha for the case of clamped-nuclei. With nonadiabatic effects included, our result is  $-8.07811(3)$~Ha. Our nonadiabatic result is in good agreement with a previous ECG study,~\cite{Bubin_LiH_noBO} which reported a value of $-8.07856887$~Ha. We report an electron affinity of $0.01187(4)$~Ha, which can be compared to the ECG prediction of $0.012132(2)$~Ha and agrees with the experimental value of $0.0126(4)$ Ha.~\cite{switch}
 
 \section{Conclusion}
 We calculated the ground-state energies of first-row atoms and their corresponding ions and hydrides with and without the Born-Oppenheimer approximation. In addition, we examined the amount of nonadiabatic contribution to the ground-state energies of all systems studied and determined the amount to be up to a few mHa. In the case of CH, the nonadiabatic effects beyond the DBOC were unusually large, although we could not rule out the possibility that this discrepancy is due to the fixed-node error in our simulations. %The nonadiabatic contribution is a monotonically increasing function of the total nuclear charge except for BH and CH.

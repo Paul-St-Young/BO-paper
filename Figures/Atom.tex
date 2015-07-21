@@ -1,3 +1,19 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{calc} % for tikz calculations
+\usetikzlibrary{arrows,decorations.markings} % make arrow head bigger
+
+% set up externalization
+\usetikzlibrary{external}
+\tikzset{external/system call={latex \tikzexternalcheckshellescape -halt-on-error
+-interaction=batchmode -jobname "\image" "\texsource" && 
+dvips -o "\image".ps "\image".dvi &&
+ps2eps "\image.ps"}}
+\tikzexternalize[shell escape=-enable-write18] % MikTeX uses a -enable-write18 instead of --shell-escape.
+% compile with: latex -enable-write18
+
+\begin{document}
+
 \begin{tikzpicture}
 % define arrow head
 [
@@ -48,4 +64,10 @@
 \node at ($0.5*(e)+0.5*(e1)$) [above] {$\vec{s}$};
 %\draw[postaction={decorate}] (O) -- ($0.99*(e1)+0.01*(O)$);
 %\node at ($0.5*(O)+0.5*(e1)$) [below left] {$\vec{r'}$};
+
+% subplot marking
+\node at (5.2,2.5) {(a)};
+
 \end{tikzpicture}
+
+\end{document}
