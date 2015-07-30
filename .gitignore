@@ -1,4 +1,3 @@
-main.pdf
 main.aux
 main.bbl
 main.blg
@@ -7,4 +6,6 @@ main.out
 main.synctex.gz
 main.end
 mainNotes.bib
+main.dvi
+main.ps
 .DS_Store
