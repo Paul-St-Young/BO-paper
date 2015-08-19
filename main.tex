@@ -65,7 +65,7 @@ After the multi-CSF expansion is generated, we impose the electron-nucleus cusp 
 \begin{align}
 \psi_e(\vec{r};\vec{R})=e^{J(\vec{r},\vec{R},\vec{\beta})}\Psi_{\text{CISD}}(\vec{r};\vec{R})\label{eq:psie}.
 \end{align}
-We optimize the CSF and Jastrow coefficients, $\vec{\alpha}$ and $\vec{\beta}$, respectively, simultaneously with QMCPACK.~\cite{QMCPACK_Kim,QMCPACK_Esler} Optimization is performed with the ions clamped to their equilibrium positions $\vec{R}_o$. The equilibrium geometries for BeH and BH are chosen to be the ECG-optimized distances for comparison with the ECG method, and the geometries for the rest of the hydrides are taken from experimental data.~\cite{CCCBDB} We use 3.015 a.u. as the equilibrium inter-nuclei distance for LiH, as this geometry is found to provide a lower clamped-nuclei ground-state energy than the ECG optimized distance of 3.061 a.u.. We include all CSFs with coefficients larger than a specific cutoff $\epsilon$ to lend reasonable flexibility to the wave function during optimization. We include as many CSFs as possible to maximize the flexibility of the wave function. However, the inclusion of too many CSFs with small expansion coefficients can introduce noise as they require a large number of samples in the optimization step to be optimized. We have chosen $\epsilon$ to restrict the number of CSFs in the wave function to be $\sim$1000 in all systems studied. Optimization is performed with the linear method~\cite{Umrigar_Linear} with roughly $10^6$ statistically independent samples.%, and we use a cost function consisting a linear combination of average local energy and reweighted variance.
+We optimize the CSF and Jastrow coefficients, $\vec{\alpha}$ and $\vec{\beta}$, respectively, simultaneously with QMCPACK.~\cite{QMCPACK_Kim,QMCPACK_Esler} Optimization is performed with the ions clamped to their equilibrium positions $\vec{R}_o$. The equilibrium geometries for BeH and BH are chosen to be the ECG-optimized distances for comparison with the ECG (Explicitly Correlated Gaussian) method, and the geometries for the rest of the hydrides are taken from experimental data.~\cite{CCCBDB} We use 3.015 a.u. as the equilibrium inter-nuclei distance for LiH, as this geometry is found to provide a lower clamped-nuclei ground-state energy than the ECG optimized distance of 3.061 a.u.. We include all CSFs with coefficients larger than a specific cutoff $\epsilon$ to lend reasonable flexibility to the wave function during optimization. We include as many CSFs as possible to maximize the flexibility of the wave function. However, the inclusion of too many CSFs with small expansion coefficients can introduce noise as they require a large number of samples in the optimization step to be optimized. We have chosen $\epsilon$ to restrict the number of CSFs in the wave function to be $\sim$1000 in all systems studied. Optimization is performed with the linear method~\cite{Umrigar_Linear} with roughly $10^6$ statistically independent samples.%, and we use a cost function consisting a linear combination of average local energy and reweighted variance.
 
 %The specific choices of active space for the systems studied are listed in Table \ref{tab:CAS}.
 %\input{Table/cas}
@@ -100,7 +100,7 @@ Using definitions from Ref.~\cite{Cederbaum_Review}, the adiabatic approximation
 \setlength{\extrarowheight}{1pt}
 \begin{threeparttable}
 
-\caption{Ground-state energies for atoms and ions and the ionization energies for the atoms:  fixed-node DMC results of this work (FN-DMC) for atoms and ions with and without the Born-Oppenheimer approximation. The rows marked with bold \textbf{FN-DMC} are our non-adiabatic results. The ionization potentials (IPs) are reported in the last section of the table. Energies are given in units of Hartree. For the highly accurate Hylleraas and ECG results, up to 8 digits are reported in the table. \label{tab:ionization}}
+\caption{Ground-state energies for atoms and ions and the ionization energies for the atoms:  fixed-node DMC results of this work (FN-DMC) for atoms and ions with and without the Born-Oppenheimer approximation. The rows marked with bold \textbf{FN-DMC} are our nonadiabatic results. The ionization potentials (IPs) are reported in the last section of the table. Energies are given in units of Hartree. For the highly accurate Hylleraas and ECG results, up to 8 digits are reported in the table. \label{tab:ionization}}
 \begin{tabular}
 % siunitx setup
 {
@@ -139,7 +139,7 @@ $E_{\text{ref}}$\tnote{a} &  \text{-}7.4780603 & \text{-}14.667356 & \text{-}24.
 \multicolumn{1}{c}{} & 
 \multicolumn{1}{c}{} &
 \multicolumn{1}{c}{} &
-\multicolumn{1}{c}{non-adiabatic} &
+\multicolumn{1}{c}{nonadiabatic} &
 \multicolumn{1}{c}{} &
 \multicolumn{1}{c}{} &
 \multicolumn{1}{c}{} &
@@ -171,7 +171,7 @@ $E_{\text{ref}}$\tnote{c} & \text{-}7.2799134 & \text{-}14.324763 & \text{-}24.3
 \multicolumn{1}{c}{} &
 \multicolumn{1}{c}{} &
 \multicolumn{1}{c}{} &
-\multicolumn{1}{c}{non-adiabatic} &
+\multicolumn{1}{c}{nonadiabatic} &
 \multicolumn{1}{c}{} &
 \multicolumn{1}{c}{} &
 \multicolumn{1}{c}{} &
@@ -191,7 +191,7 @@ IP (FN-DMC) & 0.19817(2) & 0.34256(1) & 0.30490(2) & 0.41377(3) & 0.53479(8) & 0
 \multicolumn{1}{c}{} & 
 \multicolumn{1}{c}{} &
 \multicolumn{1}{c}{} &
-\multicolumn{1}{c}{non-adiabatic} &
+\multicolumn{1}{c}{nonadiabatic} &
 \multicolumn{1}{c}{} &
 \multicolumn{1}{c}{} &
 \multicolumn{1}{c}{} &
@@ -203,7 +203,7 @@ IP (Ref.)\tnote{e} & 0.198130 & 0.342572 & 0.304980 & 0.414014 & 0.534775 & 0.50
 
 \begin{tablenotes}
 \item[a] For the atomic references, we use the Hylleraas result for Li,~\cite{Wang_Li} and ECG results for Be~\cite{Stanke_Be} and B.~\cite{Bubin_B} Ref.~\cite{Davidson_Atoms} is used for C,N,O and F where the ground-state energies are taken from Table XI.
-\item[b] We use non-adiabatic ECG results as the reference for Li,~\cite{Stanke_Li} Be~\cite{Bubin_BeH_noBO} and B~\cite{Bubin_B}, which are converged to the true ground-state to well within 0.1 mHa. The result for C,~\cite{Bubin_C} however, may have error on the order of 1 mHa.
+\item[b] We use nonadiabatic ECG results as the reference for Li,~\cite{Stanke_Li} Be~\cite{Bubin_BeH_noBO} and B~\cite{Bubin_B}, which are converged to the true ground-state to well within 0.1 mHa. The result for C,~\cite{Bubin_C} however, may have error on the order of 1 mHa.
 \item[c] For the ionic references, we use the ICI result for $\text{Li}^+$,~\cite{Nakashima_Li+} Hylleraas result for $\text{Be}^+$~\cite{Puchalski_Be+} and ECG results for $\text{B}^+$~\cite{Bubin_B+} and $\text{C}^+$.~\cite{Bubin_C+,mitroy2013} Ref.~\cite{Davidson_Atoms} is used for $\text{N}^+$,$\text{O}^+$,$\text{F}^+$.
 \item[d] ECG references only exist for $\text{Be}^+$,~\cite{Bubin_BeH_noBO} $\text{B}^+$~\cite{Bubin_B+} and $\text{C}^+$.~\cite{Bubin_C+}
 \item[e] Spin-orbit coupling and relativistic corrections~\cite{Klopper_IP} are removed from experimental data~\cite{NIST_Atoms} for comparison.
@@ -260,7 +260,7 @@ where $\mu=\frac{M}{M+1}$ is the reduced mass of the hydrogen-like atom and $M$ 
 \begin{table*}[t!]
 \setlength{\extrarowheight}{1pt}
 \begin{threeparttable}
-\caption{Ground-state energies and atomization energies: fixed-node DMC results of this work for all first row hydrides with and without the Born-Oppenheimer approximation. The rows marked with bold \textbf{FN-DMC} are our non-adiabatic results. All atomization energies are estimated for 0K. $D_o$ includes zero-point energy contribution, while $D_e$ does not. Energies are given in units of Hartree. \label{tab:atomization}}
+\caption{Ground-state energies and atomization energies: fixed-node DMC results of this work for all first row hydrides with and without the Born-Oppenheimer approximation. The rows marked with bold \textbf{FN-DMC} are our nonadiabatic results. All atomization energies are estimated for 0K. $D_o$ includes zero-point energy contribution, while $D_e$ does not. Both total energies and dissociation energies are given in units of Hartree. \label{tab:atomization}}
 \begin{tabular}
 % siunitx setup
 {
@@ -295,7 +295,7 @@ $E_{\text{ref}}$ \tnote{a} & \text{-}8.0705473 & \text{-}15.2483(4) & \text{-}25
 \multicolumn{1}{c}{} & 
 \multicolumn{1}{c}{} &
 \multicolumn{1}{c}{} &
-\multicolumn{1}{c}{non-adiabatic} &
+\multicolumn{1}{c}{nonadiabatic} &
 \multicolumn{1}{c}{} &
 \multicolumn{1}{c}{} &
 \multicolumn{1}{c}{} \\
@@ -315,7 +315,7 @@ $D_e$ Feller \tnote{b} & 0.09262(5) & 0.0809(4) & 0.1354(2) & 0.1342(2) & 0.1709
 \multicolumn{1}{c}{} & 
 \multicolumn{1}{c}{} &
 \multicolumn{1}{c}{} &
-\multicolumn{1}{c}{non-adiabatic} &
+\multicolumn{1}{c}{nonadiabatic} &
 \multicolumn{1}{c}{} &
 \multicolumn{1}{c}{} &
 \multicolumn{1}{c}{} \\
@@ -332,7 +332,7 @@ $D_o$ Exp. \cite{CCCBDB,HH} & 0.08874(38) & 0.07475(4) & 0.1281(37)\tnote{d} & 0
 \end{tablenotes}
 \end{threeparttable}
 \end{table*}
-In Table \ref{tab:atomization}, we present our results on a series of molecular systems (hydrides). Finding accurate reference data for these systems to 0.1 mHa is not straightforward, and we use highly converged ECG data when available. Two ECG calculations have been performed in the clamped-nuclei limit for LiH~\cite{Cencek_LiH,Adamowicz_LiH} and we agree within 0.03 mHa with the more recent reference. For the rest of the systems, we combined the best clamped-ion atomic references in Table \ref{tab:ionization} and thermochemistry~\cite{Feller_Corrections} estimates of atomization energy $D_e$ in Table \ref{tab:atomization} to produce the reference ground-state energies. For BeH and BH, we are within 1 mHa of the reference values, and our energies are lower than the best available quantum chemistry results of -15.247846 Ha~\cite{Koput_BeH} and -25.287650 Ha~\cite{Miliordos_BH} for BeH and BH, respectively. 
+In Table \ref{tab:atomization}, we present our results on a series of molecular systems (hydrides). Finding accurate reference data for these systems to 0.1 mHa is not straightforward. We will use highly converged ECG data when available. Two ECG calculations have been performed in the clamped-nuclei limit for LiH~\cite{Cencek_LiH,Adamowicz_LiH} and we agree within 0.03 mHa with the more recent reference. For the rest of the systems, we combined the best clamped-ion atomic references in Table \ref{tab:ionization} and thermochemistry~\cite{Feller_Corrections} estimates of atomization energy $D_e$ in Table \ref{tab:atomization} to produce the reference ground-state energies. For BeH and BH, we are within 1 mHa of the reference values, and our energies are lower than the best available quantum chemistry results of -15.247846 Ha~\cite{Koput_BeH} and -25.287650 Ha~\cite{Miliordos_BH} for BeH and BH, respectively. 
 %For the rest of the systems it is possible we have the lowest variational estimates. %, but a comparison with reference suggests that we have fixed-node error in the range of a few mHa.
 
 \begin{figure}[h]
