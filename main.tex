@@ -225,7 +225,9 @@ The systems with the most error are O and F, for which other QMC studies seem to
 \caption{FN-DMC ground state energies for $\text{Be}^+$, Be, $\text{B}^+$, B, $\text{C}^+$ relative to ECG references~\cite{Stanke_Be,Puchalski_Be+,Bubin_BeH_noBO,Bubin_B,Bubin_B+,Bubin_C+} for either clamped-ion or nonadiabatic calculations. These relative energies provide an estimate for the fixed-node error in the electronic and electron-ion wave functions, respectively.\label{fig:atom-ECG}}
 \end{figure}
 
-It is more difficult to find accurate references for the nonadiabatic results. We provide the first nonadiabatic QMC benchmarks for the first-row atoms. There are six ECG calculations of nonadiabatic ground-state energies that are reportedly converged beyond 0.1 mHa, which we use as references. Our reported nonadiabatic ground-state energies for Li, Be, $\text{Be}^+$, B, $\text{B}^+$ and $\text{C}^+$ are in agreement with the ECG results to within 0.3 mHa, as shown in Figure \ref{fig:atom-ECG}. For these systems, the ECG results are converged to essentially the exact ground-state energies in both the clamped-ion and nonadiabatic cases. The difference between our DMC ground-state and ECG reference is the fixed-node error present in our wave functions. No reference calculations exist for the heavier atoms N,O, and F. However, it is possible to apply finite-mass correction~\cite{Davidson_Atoms,Cencek_LiH} (i.e., divide by $1+m_e/M$, where $m_e$ is the mass of an electron and $M$ is the mass of the nucleus) to the best clamped-ion references to estimate the nonadiabatic references. The energies for N, O, and F obtained in this way are -54.5871, -75.0647 and -99.7310 Ha, respectively. For the ionized states, we obtain -54.0525, -74.5643 and -99.0900 Ha. %A comparison of our results to these references reveals that the electronic and electron-ion wave functions are of similar quality for all atoms and ions. %Notice the fixed-node error is virtually identical in the electronic wave function and electron-ion wave function of the same system, suggesting that our approach is capable of generating high quality electron-ion wave function from an optimized electronic wave function.
+It is more difficult to find accurate references for the nonadiabatic results. We provide the first nonadiabatic QMC benchmarks for the first-row atoms. There are six ECG calculations of nonadiabatic ground-state energies that are reportedly converged beyond 0.1 mHa, which we use as references. Our reported nonadiabatic ground-state energies for Li, Be, $\text{Be}^+$, B, $\text{B}^+$ and $\text{C}^+$ are in agreement with the ECG results to within 0.3 mHa, as shown in Figure \ref{fig:atom-ECG}. For these systems, the ECG results are converged to essentially the exact ground-state energies in both the clamped-ion and nonadiabatic cases. The difference between our DMC ground-state and ECG reference is the fixed-node error present in our wave functions. \textcolor{red}{We would expect the clamped ion results to be more accurate than the nonadiabatic results, since the nonadiabatic wave functions are inherently more difficult to construct.  However, for the systems in Figure \ref{fig:atom-ECG}, this difference in quality is on the order of 0.1 mHa. In the case of Be and $\text{Be}^+$, the nonadiabatic wave function is actually more accurate than the corresponding clamped-ion wave function.}
+
+No reference calculations exist for the heavier atoms N,O, and F. However, it is possible to apply finite-mass correction~\cite{Davidson_Atoms,Cencek_LiH} (i.e., divide by $1+m_e/M$, where $m_e$ is the mass of an electron and $M$ is the mass of the nucleus) to the best clamped-ion references to estimate the nonadiabatic references. The energies for N, O, and F obtained in this way are -54.5871, -75.0647 and -99.7310 Ha, respectively. For the ionized states, we obtain -54.0525, -74.5643 and -99.0900 Ha. %A comparison of our results to these references reveals that the electronic and electron-ion wave functions are of similar quality for all atoms and ions. %Notice the fixed-node error is virtually identical in the electronic wave function and electron-ion wave function of the same system, suggesting that our approach is capable of generating high quality electron-ion wave function from an optimized electronic wave function.
 
 \begin{figure}[h]
 \centering
@@ -239,13 +241,33 @@ For the atoms considered in this work, ionization energies have previously been 
 
 \begin{figure}[h]
 \includegraphics[scale=.4]{atom-nad-ad}
-\caption{The nonadiabatic contribution to ground-state energies of atoms and ions calculated with FN-DMC. The nonadiabatic contribution is partitioned into the DBOC and the remaining correction. A hatched bar indicates the contribution is negative. \label{fig:atom-nad-ad}} %nonadiabatic contribution shows very little dependence with the ionized state.
+\caption{The nonadiabatic contribution to ground-state energies of atoms and ions calculated with FN-DMC. The nonadiabatic contribution is partitioned into the DBOC and the remaining correction. A hatched bar indicates the contribution is negative. \textcolor{red}{The numerical DBOC data is provided in Table \ref{tab:nad-ad-atoms}}. \label{fig:atom-nad-ad}} %nonadiabatic contribution shows very little dependence with the ionized state.
 \end{figure}
+
+
 
 \begin{figure}[h]
 \includegraphics[scale=.4]{analytical}
 \caption{The nonadiabatic contribution to ground-state energies of ions and their corresponding hydrogen-like atoms calculated with FN-DMC and analytically as shown in Eq. \ref{eq:analytical}. \label{fig:analytical}}
 \end{figure}
+
+\begin{table}[h]
+\setlength{\extrarowheight}{1pt}
+\caption{\textcolor{red}{Nonadiabatic corrections for the ground-state energies of atoms and ions. $E_n$ and $E_c$ are the FN-DMC calculations of the nonadiabatic and clamped ground-state energies, respectively. The DBOC contribution is provided by Wim Klopper.~\cite{klop1} All energies are reported in units of mHa.}\label{tab:nad-ad-atoms}}
+\begin{tabular}{ccc|ccc}
+\hline\hline
+System & $E_n-E_c$&  DBOC     & System & $E_n-E_c$&  DBOC \\ \hline
+Li$^+$ &  0.58(4) &  0.591970 & Li     &  0.64(2) &  0.608411 \\
+Be$^+$ &  0.88(2) &  0.899706 & Be     &  0.88(3) &  0.920848 \\
+B$^+$  &  1.33(4) &  1.242988 & B      &  1.34(4) &  1.241669 \\
+C$^+$  &  1.72(6) &  1.710382 & C      &  1.75(5) &  1.710900 \\
+N$^+$  &  2.06(6) &  2.066914 & N      &  2.10(8) &  2.069149 \\
+O$^+$  &  2.6(1)  &  2.440320 & O      &  2.7(2)  &  2.441821 \\
+F$^+$  &  2.4(1)  &  2.675128 & F      &  2.5(1)  &  2.678181 \\
+\hline\hline
+\end{tabular}
+\end{table}
+
 
 In \textcolor{red}{Table \ref{tab:nad-ad-atoms} and} Figure \ref{fig:atom-nad-ad}, we demonstrate the amount of nonadiabatic contribution to the ground-state energies in atoms and ions calculated as the difference between the nonadiabatic and clamped-ion ground-state energies. The amount of nonadiabatic contribution is always positive for these systems and mostly increases with atomic number. Using previous benchmark values for the DBOC, we can break down the nonadiabatic contribution of our system into a DBOC contribution and everything beyond the DBOC.~\cite{Klopper_DBOC,CFOUR,Harding} \textcolor{red}{The DBOC is relatively insensitive to the level of theory.} Figure \ref{fig:atom-nad-ad} indicates that in the atomic systems, the DBOC is the dominant contribution to the nonadiabatic energy, with the remaining amount being close to zero within error bars. The nonadiabatic energy is relatively constant between the neutral and cationic species. This observation suggests that the amount of nonadiabatic contribution is insensitive to the addition or removal of a valence electron. Physically, the valence electrons are farther from the nucleus than the core electrons, and thus are likely to be affected to a lesser degree by the delocalization of the nucleus. 
 
@@ -254,7 +276,7 @@ The nonadiabatic contributions in the cations can also be compared with those in
 E_n-E_c=\frac{Z^2}{2}(1-\mu) \label{eq:analytical}
 \end{align}
 where $\mu=\frac{M}{M+1}$ is the reduced mass of the hydrogen-like atom and $M$ and $Z$ are the mass and atomic number of the nucleus, respectively. The increase in the nonadiabatic contribution with increasing $Z$ for hydrogen-like atoms reflects the stronger Coulombic attraction between the electron and the nucleus, which enhances the effects of the delocalization of the nucleus. An interesting case to consider is the transition from Li$^{2+}$ to Li. As shown in Figure \ref{fig:atom-nad-ad} and Figure \ref{fig:analytical}, the addition of a core electron to Li$^{2+}$ decreases the nonadiabatic contribution, while the addition of a valence electron has no further effect within our error bars. We also calculate the nonadiabatic contribution in Be$^{2+}$ to be $0.78(5)$ mHa, which is $0.29(5)$ mHa lower than the nonadiabatic contribution in Be$^{3+}$ and is closer to that in Be$^{+}$ of 0.88(2) mHa. Because the core electrons interact more strongly with the nucleus than do the valence electrons, the core electrons are affected more by the delocalization of the nucleus. Moreover, the addition of a second core electron decreases the nonadiabatic contribution for Li$^{2+}$ and Be$^{3+}$. %due to correlation with the first core electron.%shielding effects.
-\textcolor{red}{We note in passing that the nonadiabatic correction to the atomic ground-state energies of Eq. (\ref{eq:analytical}) is roughly linear in Z, while the relativistic recoil correction~\cite{Merkt_H2} scales as $Z^4$. Therefore, nonadiabatic effects are likely to be less significant than relativistic and other correction for the heavy atoms.}
+\textcolor{red}{We note that the nonadiabatic correction to the atomic ground-state energies of Eq. (\ref{eq:analytical}), which only holds for single electron systems, is roughly linear in Z, while the relativistic recoil correction~\cite{Merkt_H2} scales as $Z^4$. Therefore, the nonadiabatic effect is not seen experimentally,  as it is less significant than this relativistic effect.}
 
 \subsection{Hydrides}
 
@@ -363,26 +385,11 @@ To estimate the nonadiabatic contribution to the ground-state energies for these
 
 For the LiH molecule, we also calculated the electron affinity for comparison to ECG results. We calculated the ground-state energy of LiH$^-$ to be $-8.08222(2)$~Ha for the case of clamped-nuclei. With nonadiabatic effects included, our result is  $-8.07811(3)$~Ha. Our nonadiabatic result is in good agreement with a previous ECG study,~\cite{Bubin_LiH-_noBO} which reported a value of $-8.07856887$~Ha. We report an electron affinity of $0.01187(4)$~Ha, which can be compared to the ECG prediction of $0.012132(2)$~Ha and agrees with the experimental value of $0.0126(4)$ Ha.~\cite{switch}
 
-\begin{table}[h]
-\setlength{\extrarowheight}{1pt}
-\caption{\textcolor{red}{Nonadiabatic corrections for the ground-state energies of atoms and ions. $E_n$ and $E_c$ are the FN-DMC calculations of the nonadiabatic and clamped ground-state energies, respectively. The DBOC contribution is provided by Wim Klopper.~\cite{Klopper_IP} All energies are reported in units of mHa.}\label{tab:nad-ad-atoms}}
-\begin{tabular}{ccc|ccc}
-\hline\hline
-System & $E_n-E_c$&  DBOC     & System & $E_n-E_c$&  DBOC \\ \hline
-Li$^+$ &  0.58(4) &  0.591970 & Li     &  0.64(2) &  0.608411 \\
-Be$^+$ &  0.88(2) &  0.899706 & Be     &  0.88(3) &  0.920848 \\
-B$^+$  &  1.33(4) &  1.242988 & B      &  1.34(4) &  1.241669 \\
-C$^+$  &  1.72(6) &  1.710382 & C      &  1.75(5) &  1.710900 \\
-N$^+$  &  2.06(6) &  2.066914 & N      &  2.10(8) &  2.069149 \\
-O$^+$  &  2.6(1)  &  2.440320 & O      &  2.7(2)  &  2.441821 \\
-F$^+$  &  2.4(1)  &  2.675128 & F      &  2.5(1)  &  2.678181 \\
-\hline\hline
-\end{tabular}
-\end{table}
+
 
 \begin{table}[h]
 \setlength{\extrarowheight}{1pt}
-\caption{\textcolor{red}{Nonadiabatic corrections for the ground-state energies of diatomic molcules. $E_n$ and $E_c$ are the FN-DMC calculations of the nonadiabatic and clamped ground-state energies, respectively. The ZPE and DBOC contributions are provided by David Feller.~\cite{Feller_Corrections} The nonadiabatic correction for the dissociation energy estimated with FM-DMC are included in the $\Delta D_o$ column. All energies are reported in units of mHa.}\label{tab:nad-ad-diatomics}}
+\caption{\textcolor{red}{Nonadiabatic corrections for the ground-state energies of diatomic molecules. $E_n$ and $E_c$ are the FN-DMC calculations of the nonadiabatic and clamped ground-state energies, respectively. The ZPE and DBOC contributions are provided by David Feller.~\cite{fell1} The nonadiabatic correction for the dissociation energy estimated with FM-DMC are included in the $\Delta D_o$ column. All energies are reported in units of mHa.}\label{tab:nad-ad-diatomics}}
 \begin{tabular}{ccccc}
 \hline\hline
 System & $E_n-E_c$ &   ZPE &      DBOC & $\Delta D_o$\\ \hline
